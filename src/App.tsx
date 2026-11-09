@@ -1,5 +1,6 @@
 
 import { useEffect, useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import './App.css'
 
@@ -29,24 +30,88 @@ type Tool = {
 }
 
 const tools: Tool[] = [
-  { name: 'PDF to Word', category: 'PDF', icon: '📄', description: 'Convert PDF files into editable Word documents.' },
-  { name: 'Word to PDF', category: 'PDF', icon: '📝', description: 'Turn Word documents into PDF files.' },
-  { name: 'Merge PDF', category: 'PDF', icon: '📚', description: 'Combine multiple PDF files into one document.' },
-  { name: 'Split PDF', category: 'PDF', icon: '✂️', description: 'Separate pages from a PDF document.' },
-  { name: 'Text to PDF', category: 'PDF', icon: '📰', description: 'Turn your written text into a downloadable PDF.' },
-
-  { name: 'Image Converter', category: 'Image', icon: '🖼️', description: 'Convert images between PNG, JPG and WEBP formats.' },
-  { name: 'Image Compressor', category: 'Image', icon: '🗜️', description: 'Reduce image file size while maintaining quality.' },
-  { name: 'Image Resizer', category: 'Image', icon: '📐', description: 'Resize images to your preferred dimensions.' },
-
-  { name: 'Video Converter', category: 'Video', icon: '🎬', description: 'Convert video files between supported formats.' },
-  { name: 'Audio Converter', category: 'Audio', icon: '🎵', description: 'Convert audio files into different formats.' },
-
-  { name: 'ZIP Extractor', category: 'Utility', icon: '📦', description: 'Extract files from ZIP archives.' },
-  { name: 'Unit Converter', category: 'Utility', icon: '🔄', description: 'Convert common measurements and units.' },
+  {
+    name: 'PDF to Word',
+    category: 'PDF',
+    icon: '📄',
+    description: 'Convert PDF files into editable Word documents.',
+  },
+  {
+    name: 'Word to PDF',
+    category: 'PDF',
+    icon: '📝',
+    description: 'Turn Word documents into PDF files.',
+  },
+  {
+    name: 'Merge PDF',
+    category: 'PDF',
+    icon: '📚',
+    description: 'Combine multiple PDF files into one document.',
+  },
+  {
+    name: 'Split PDF',
+    category: 'PDF',
+    icon: '✂️',
+    description: 'Separate pages from a PDF document.',
+  },
+  {
+    name: 'Text to PDF',
+    category: 'PDF',
+    icon: '📰',
+    description: 'Turn your written text into a downloadable PDF.',
+  },
+  {
+    name: 'Image Converter',
+    category: 'Image',
+    icon: '🖼️',
+    description: 'Convert images between PNG, JPG and WEBP formats.',
+  },
+  {
+    name: 'Image Compressor',
+    category: 'Image',
+    icon: '🗜️',
+    description: 'Reduce image file size while maintaining quality.',
+  },
+  {
+    name: 'Image Resizer',
+    category: 'Image',
+    icon: '📐',
+    description: 'Resize images to your preferred dimensions.',
+  },
+  {
+    name: 'Video Converter',
+    category: 'Video',
+    icon: '🎬',
+    description: 'Convert video files between supported formats.',
+  },
+  {
+    name: 'Audio Converter',
+    category: 'Audio',
+    icon: '🎵',
+    description: 'Convert audio files into different formats.',
+  },
+  {
+    name: 'ZIP Extractor',
+    category: 'Utility',
+    icon: '📦',
+    description: 'Extract files from ZIP archives.',
+  },
+  {
+    name: 'Unit Converter',
+    category: 'Utility',
+    icon: '🔄',
+    description: 'Convert common measurements and units.',
+  },
 ]
 
-const categories = ['All Tools', 'PDF', 'Image', 'Video', 'Audio', 'Utility']
+const categories = [
+  'All Tools',
+  'PDF',
+  'Image',
+  'Video',
+  'Audio',
+  'Utility',
+]
 
 const toolRoutes: Record<string, string> = {
   'PDF to Word': 'pdf-to-word',
@@ -93,7 +158,7 @@ function App() {
     return slug ? routeTools[slug] || '' : ''
   })
 
-  // Theme management
+  // Theme management - original colors preserved
   useEffect(() => {
     localStorage.setItem('lionramp-theme', darkMode ? 'dark' : 'light')
 
@@ -103,8 +168,10 @@ function App() {
     )
   }, [darkMode])
 
-  // Close Privacy Policy modal with Escape key
+  // Close Privacy Policy with Escape key
   useEffect(() => {
+    if (!showPrivacyPolicy) return
+
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setShowPrivacyPolicy(false)
@@ -116,11 +183,15 @@ function App() {
     return () => {
       window.removeEventListener('keydown', handleEscape)
     }
-  }, [])
+  }, [showPrivacyPolicy])
 
   // Prevent background scrolling while modal is open
   useEffect(() => {
-    document.body.style.overflow = showPrivacyPolicy ? 'hidden' : ''
+    if (showPrivacyPolicy) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
 
     return () => {
       document.body.style.overflow = ''
@@ -135,7 +206,8 @@ function App() {
         tool.description.toLowerCase().includes(search.toLowerCase())
 
       const matchesCategory =
-        activeCategory === 'All Tools' || tool.category === activeCategory
+        activeCategory === 'All Tools' ||
+        tool.category === activeCategory
 
       return matchesSearch && matchesCategory
     })
@@ -199,31 +271,35 @@ function App() {
     }
   }
 
-  // Privacy Policy modal
-  const privacyModal = showPrivacyPolicy ? (
-    <div
-      className="privacy-modal-overlay"
-      onClick={() => setShowPrivacyPolicy(false)}
-    >
-      <div
-        className="privacy-modal-content"
-        onClick={(event) => event.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Privacy Policy"
-      >
-        <button
-          className="privacy-close-button"
+  // Privacy Policy Modal
+  const privacyModal = showPrivacyPolicy
+    ? createPortal(
+        <div
+          className="privacy-modal-overlay"
           onClick={() => setShowPrivacyPolicy(false)}
-          aria-label="Close Privacy Policy"
         >
-          ✕
-        </button>
+          <div
+            className="privacy-modal-content"
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Privacy Policy"
+          >
+            <button
+              type="button"
+              className="privacy-close-button"
+              onClick={() => setShowPrivacyPolicy(false)}
+              aria-label="Close Privacy Policy"
+            >
+              ✕
+            </button>
 
-        <PrivacyPolicy />
-      </div>
-    </div>
-  ) : null
+            <PrivacyPolicy />
+          </div>
+        </div>,
+        document.body
+      )
+    : null
 
   // Tool page
   if (activeTool) {
@@ -242,6 +318,7 @@ function App() {
 
             <div className="header-actions">
               <button
+                type="button"
                 className="theme-toggle"
                 onClick={() => setDarkMode(!darkMode)}
               >
@@ -253,6 +330,7 @@ function App() {
 
         <main className="tool-page">
           <button
+            type="button"
             className="back-button"
             onClick={() => {
               window.location.href = window.location.pathname
@@ -272,6 +350,7 @@ function App() {
           <p>Powerful Tools. Simple Solutions.</p>
 
           <button
+            type="button"
             className="privacy-footer-link"
             onClick={() => setShowPrivacyPolicy(true)}
           >
@@ -306,6 +385,7 @@ function App() {
 
           <div className="header-actions">
             <button
+              type="button"
               className="theme-toggle"
               onClick={() => setDarkMode(!darkMode)}
             >
@@ -358,6 +438,7 @@ function App() {
           <div className="category-filter">
             {categories.map((category) => (
               <button
+                type="button"
                 key={category}
                 className={`category-button ${
                   activeCategory === category ? 'active' : ''
@@ -381,6 +462,7 @@ function App() {
                 </div>
 
                 <button
+                  type="button"
                   className="open-tool-button"
                   onClick={() => openTool(tool.name)}
                 >
@@ -450,6 +532,7 @@ function App() {
             </p>
 
             <button
+              type="button"
               className="privacy-footer-link"
               onClick={() => setShowPrivacyPolicy(true)}
             >

@@ -1,5 +1,6 @@
 
 import { useEffect, useMemo, useState } from 'react'
+
 import './App.css'
 
 import lionLogo from './assets/lionramp-logo.png'
@@ -17,6 +18,8 @@ import VideoConverter from './tools/VideoConverter'
 import AudioConverter from './tools/AudioConverter'
 import ZipExtractor from './tools/ZipExtractor'
 import UnitConverter from './tools/UnitConverter'
+
+import PrivacyPolicy from './PrivacyPolicy'
 
 type Tool = {
   name: string
@@ -78,6 +81,7 @@ const routeTools: Record<string, string> = {
 function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All Tools')
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false)
 
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('lionramp-theme') === 'dark'
@@ -89,14 +93,41 @@ function App() {
     return slug ? routeTools[slug] || '' : ''
   })
 
+  // Theme management
   useEffect(() => {
     localStorage.setItem('lionramp-theme', darkMode ? 'dark' : 'light')
+
     document.documentElement.setAttribute(
       'data-theme',
       darkMode ? 'dark' : 'light'
     )
   }, [darkMode])
 
+  // Close Privacy Policy modal with Escape key
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setShowPrivacyPolicy(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+
+    return () => {
+      window.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
+  // Prevent background scrolling while modal is open
+  useEffect(() => {
+    document.body.style.overflow = showPrivacyPolicy ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [showPrivacyPolicy])
+
+  // Filter tools
   const filteredTools = useMemo(() => {
     return tools.filter((tool) => {
       const matchesSearch =
@@ -110,6 +141,7 @@ function App() {
     })
   }, [search, activeCategory])
 
+  // Open tool in new tab
   const openTool = (toolName: string) => {
     const route = toolRoutes[toolName]
 
@@ -123,6 +155,7 @@ function App() {
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
+  // Render selected tool
   const renderActiveTool = () => {
     switch (activeTool) {
       case 'PDF to Word':
@@ -166,6 +199,33 @@ function App() {
     }
   }
 
+  // Privacy Policy modal
+  const privacyModal = showPrivacyPolicy ? (
+    <div
+      className="privacy-modal-overlay"
+      onClick={() => setShowPrivacyPolicy(false)}
+    >
+      <div
+        className="privacy-modal-content"
+        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Privacy Policy"
+      >
+        <button
+          className="privacy-close-button"
+          onClick={() => setShowPrivacyPolicy(false)}
+          aria-label="Close Privacy Policy"
+        >
+          ✕
+        </button>
+
+        <PrivacyPolicy />
+      </div>
+    </div>
+  ) : null
+
+  // Tool page
   if (activeTool) {
     return (
       <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -208,12 +268,23 @@ function App() {
 
         <footer className="site-footer">
           <p>© {new Date().getFullYear()} LIONRAMP. All rights reserved.</p>
+
           <p>Powerful Tools. Simple Solutions.</p>
+
+          <button
+            className="privacy-footer-link"
+            onClick={() => setShowPrivacyPolicy(true)}
+          >
+            Privacy Policy
+          </button>
         </footer>
+
+        {privacyModal}
       </div>
     )
   }
 
+  // Homepage
   return (
     <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="site-header">
@@ -373,9 +444,22 @@ function App() {
             </div>
           </div>
 
-          <p>© {new Date().getFullYear()} LIONRAMP. All rights reserved.</p>
+          <div className="footer-bottom">
+            <p>
+              © {new Date().getFullYear()} LIONRAMP. All rights reserved.
+            </p>
+
+            <button
+              className="privacy-footer-link"
+              onClick={() => setShowPrivacyPolicy(true)}
+            >
+              Privacy Policy
+            </button>
+          </div>
         </div>
       </footer>
+
+      {privacyModal}
     </div>
   )
 }

@@ -1,3 +1,4 @@
+
 :root {
   font-family: Inter, Arial, sans-serif;
   color: #202638;
@@ -56,6 +57,8 @@ button {
   --accent: #8b7cff;
   --accent-hover: #a195ff;
 }
+
+/* HEADER */
 
 .site-header {
   position: sticky;
@@ -118,6 +121,8 @@ button {
   color: var(--text);
 }
 
+/* HERO SECTION */
+
 .hero-section {
   min-height: 440px;
   display: flex;
@@ -179,6 +184,8 @@ button {
   background: var(--accent-hover);
 }
 
+/* TOOLS SECTION */
+
 .tools-section {
   max-width: 1200px;
   margin: auto;
@@ -201,6 +208,8 @@ button {
   color: var(--muted);
 }
 
+/* SEARCH */
+
 .search-container {
   max-width: 600px;
   margin: 0 auto 24px;
@@ -221,6 +230,16 @@ button {
   background: transparent;
   color: var(--text);
 }
+
+.search-container input::placeholder {
+  color: var(--muted);
+}
+
+.search-icon {
+  flex-shrink: 0;
+}
+
+/* CATEGORY FILTER */
 
 .category-filter {
   display: flex;
@@ -244,6 +263,8 @@ button {
   border-color: var(--accent);
   color: white;
 }
+
+/* TOOL CARDS */
 
 .tools-grid {
   display: grid;
@@ -322,6 +343,8 @@ button {
   background: var(--accent-hover);
 }
 
+/* NO TOOLS */
+
 .no-tools {
   padding: 50px;
   text-align: center;
@@ -331,6 +354,8 @@ button {
 .no-tools span {
   font-size: 35px;
 }
+
+/* ABOUT SECTION */
 
 .about-section {
   padding: 75px 24px;
@@ -376,6 +401,8 @@ button {
   line-height: 1.6;
 }
 
+/* TOOL PAGE */
+
 .tool-page {
   min-height: 70vh;
   max-width: 1100px;
@@ -401,7 +428,7 @@ button {
   color: var(--text);
 }
 
-/* Tool title background fix */
+/* TOOL TITLE BACKGROUND FIX */
 
 .active-tool-container h1,
 .active-tool-container h2,
@@ -413,7 +440,7 @@ button {
   background-color: transparent !important;
 }
 
-/* Tool page form controls */
+/* TOOL PAGE FORM CONTROLS */
 
 .active-tool-container input,
 .active-tool-container textarea,
@@ -428,11 +455,13 @@ button {
   color: var(--muted);
 }
 
-/* Keep tool panels compatible with both themes */
+/* KEEP TOOL PANELS COMPATIBLE WITH BOTH THEMES */
 
 .active-tool-container > div {
   color: var(--text);
 }
+
+/* FOOTER */
 
 .site-footer {
   padding: 30px 24px;
@@ -473,80 +502,61 @@ button {
   font-size: 13px;
 }
 
-/* =================================
-   PRIVACY POLICY MODAL
-================================= */
+/* PRIVACY POLICY MODAL */
 
 .privacy-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 999999;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 20px;
-
   background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-
   animation: privacyFadeIn 0.25s ease;
 }
 
 .privacy-modal-content {
   position: relative;
-
   width: 100%;
   max-width: 900px;
   max-height: 90vh;
-
   overflow-x: hidden;
   overflow-y: auto;
-
   border-radius: 16px;
   background: #f9fafb;
   color: #202638;
-
   box-shadow: 0 25px 80px rgba(0,0,0,.35);
-
   animation: privacySlideIn 0.3s ease;
 }
 
-/* Privacy Policy component */
+/* PRIVACY POLICY COMPONENT */
 
 .privacy-modal-content > div:not(.privacy-close-button) {
   min-height: auto !important;
 }
 
-/* Close Button */
+/* CLOSE BUTTON */
 
 .privacy-close-button {
   position: sticky;
   top: 12px;
   float: right;
-
   z-index: 100;
-
   width: 38px;
   height: 38px;
-
   margin: 12px 12px -48px 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: none;
   border-radius: 50%;
-
   background: #111827;
   color: white;
-
   font-size: 18px;
   cursor: pointer;
-
   transition: .2s ease;
 }
 
@@ -555,24 +565,18 @@ button {
   transform: rotate(90deg);
 }
 
-/* Privacy Policy Footer Link */
+/* PRIVACY POLICY FOOTER LINK */
 
 .privacy-footer-link {
   padding: 6px 0;
-
   border: none;
   background: none;
-
   color: var(--muted);
-
   font-family: inherit;
   font-size: 14px;
-
   cursor: pointer;
-
   text-decoration: underline;
   text-underline-offset: 4px;
-
   opacity: .8;
   transition: .2s ease;
 }
@@ -582,20 +586,18 @@ button {
   color: var(--accent);
 }
 
-/* Footer Layout */
+/* FOOTER LAYOUT */
 
 .footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   flex-wrap: wrap;
   gap: 12px;
-
   width: 100%;
 }
 
-/* Modal Animations */
+/* MODAL ANIMATIONS */
 
 @keyframes privacyFadeIn {
   from {
@@ -619,9 +621,24 @@ button {
   }
 }
 
-/* =================================
-   RESPONSIVE DESIGN
-================================= */
+/* WEBSITE LINK */
+
+.footer-brand a {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-brand a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 850px) {
   .tools-grid {
@@ -682,23 +699,4 @@ button {
     justify-content: center;
     text-align: center;
   }
-}
-
-/* =================================
-   WEBSITE LINK
-================================= */
-
-.footer-brand a {
-  display: inline-block;
-  margin-top: 6px;
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-brand a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
 }

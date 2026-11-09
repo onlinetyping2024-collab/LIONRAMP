@@ -31,7 +31,7 @@ const PrivacyPolicy: React.FC = () => {
               1. Introduction
             </h2>
             <p className="leading-7 text-gray-600">
-              Welcome to LIONRAMP (https://iceiy.com).
+              Welcome to LIONRAMP (https://lionramp.iceiy.com).
               Your privacy is important to us. This Privacy Policy
               explains how we collect, use, disclose, and protect
               information when you visit our website and use our
@@ -234,14 +234,19 @@ const PrivacyPolicy: React.FC = () => {
             </h2>
             <p className="leading-7 text-gray-600">
               If you have any questions, concerns, or requests
-              regarding this Privacy Policy, please contact us
-              at:
-            </p>
-            <p className="mt-3 font-semibold text-blue-600">
-              Email: YOUR_EMAIL@example.com
+              regarding this Privacy Policy, please visit our
+              website.
             </p>
             <p className="text-gray-600 mt-2">
-              Website: https://iceiy.com
+              Website:{" "}
+              <a
+                href="https://lionramp.iceiy.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-blue-600 hover:underline break-all"
+              >
+                https://lionramp.iceiy.com
+              </a>
             </p>
           </section>
 

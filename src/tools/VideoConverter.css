@@ -1,0 +1,227 @@
+
+.video-converter-tool {
+  width: 100%;
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 30px;
+  border-radius: 22px;
+  background: var(--card, #1e293b);
+  color: var(--text, #f1f5f9);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+}
+
+.video-converter-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  background: transparent !important;
+}
+
+.video-converter-heading h2,
+.video-converter-heading p {
+  background: transparent !important;
+}
+
+.video-converter-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  background: transparent !important;
+}
+
+.video-converter-heading h2 {
+  font-size: 27px;
+  margin: 8px 0;
+  color: var(--text, #f1f5f9);
+}
+
+.video-converter-heading p {
+  color: var(--muted, #cbd5e1);
+}
+
+.video-converter-upload {
+  padding: 35px 20px;
+  border: 2px dashed var(--border, #475569);
+  border-radius: 18px;
+  text-align: center;
+  background: var(--surface, #334155);
+}
+
+.video-converter-upload > span {
+  font-size: 40px;
+  background: transparent;
+}
+
+.video-converter-upload h3 {
+  margin: 10px 0;
+  color: var(--text, #f1f5f9);
+  background: transparent !important;
+}
+
+.video-converter-upload p {
+  color: var(--muted, #cbd5e1);
+  font-size: 14px;
+  background: transparent;
+}
+
+.video-converter-browse {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.video-converter-browse:hover {
+  background: #1d4ed8;
+}
+
+.video-converter-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 500px;
+  margin: 25px auto 0;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--card, #1e293b);
+  border: 1px solid var(--border, #475569);
+  text-align: left;
+}
+
+.video-converter-file strong {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  background: transparent;
+}
+
+.video-converter-file small {
+  color: var(--muted, #cbd5e1);
+  background: transparent;
+}
+
+.video-converter-file button {
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  cursor: pointer;
+}
+
+.video-converter-settings {
+  margin-top: 25px;
+  background: transparent;
+}
+
+.video-converter-settings label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  background: transparent;
+}
+
+.video-converter-settings select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border, #475569);
+  border-radius: 10px;
+  background: var(--card, #1e293b);
+  color: var(--text, #f1f5f9);
+}
+
+.video-converter-progress {
+  margin-top: 25px;
+  background: transparent;
+}
+
+.video-converter-progress > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  background: transparent;
+}
+
+.video-converter-progress-track {
+  height: 10px;
+  background: var(--border, #475569);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.video-converter-progress-track div {
+  height: 100%;
+  background: #2563eb;
+  transition: width 0.3s;
+}
+
+.video-converter-error,
+.video-converter-success {
+  padding: 14px;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.video-converter-error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.video-converter-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.video-converter-button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.video-converter-button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.video-converter-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.video-converter-note {
+  margin-top: 25px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--surface, #334155);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.video-converter-note strong,
+.video-converter-note p {
+  background: transparent;
+}
+
+.video-converter-note p {
+  margin: 6px 0 0;
+  color: var(--muted, #cbd5e1);
+}
+
+@media (max-width: 600px) {
+  .video-converter-tool {
+    padding: 20px 15px;
+    margin: 15px auto;
+  }
+
+  .video-converter-heading h2 {
+    font-size: 22px;
+  }
+}

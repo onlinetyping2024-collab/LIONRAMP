@@ -1,0 +1,242 @@
+
+.pdf-word-tool {
+  width: 100%;
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 30px;
+  border-radius: 22px;
+  background: var(--card, #1e293b);
+  color: var(--text, #f1f5f9);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading section */
+.pdf-word-tool .pdf-word-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.pdf-word-tool .pdf-word-heading h2 {
+  font-size: 27px;
+  margin: 8px 0;
+  color: var(--text, #f1f5f9) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.pdf-word-tool .pdf-word-heading p {
+  color: var(--muted, #94a3b8);
+  margin: 8px 0;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.pdf-word-tool .pdf-word-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Upload section */
+.pdf-word-upload {
+  padding: 35px 20px;
+  border: 2px dashed var(--border, #64748b);
+  border-radius: 18px;
+  text-align: center;
+  background: var(--surface, #334155);
+  color: var(--text, #f1f5f9);
+}
+
+.pdf-word-upload-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  background: transparent !important;
+}
+
+.pdf-word-upload h3 {
+  margin: 8px 0;
+  color: var(--text, #f1f5f9) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.pdf-word-upload p {
+  color: var(--muted, #94a3b8);
+  font-size: 14px;
+  background: transparent !important;
+}
+
+/* Browse button */
+.pdf-word-browse {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.pdf-word-browse:hover {
+  background: #1d4ed8;
+}
+
+/* Selected file */
+.pdf-word-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 500px;
+  margin: 25px auto 0;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--surface, #334155);
+  color: var(--text, #f1f5f9);
+  border: 1px solid var(--border, #64748b);
+  text-align: left;
+}
+
+.pdf-word-file > span {
+  font-size: 28px;
+}
+
+.pdf-word-file div {
+  flex: 1;
+  min-width: 0;
+}
+
+.pdf-word-file strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.pdf-word-file small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted, #94a3b8);
+}
+
+.pdf-word-remove {
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+/* Progress */
+.pdf-word-progress {
+  margin-top: 25px;
+}
+
+.pdf-word-progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  font-size: 14px;
+}
+
+.pdf-word-progress-track {
+  width: 100%;
+  height: 10px;
+  background: var(--border, #64748b);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.pdf-word-progress-track div {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 20px;
+  transition: width 0.3s;
+}
+
+/* Error and success messages */
+.pdf-word-error,
+.pdf-word-success {
+  padding: 14px;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.pdf-word-error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.pdf-word-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Convert button */
+.pdf-word-convert {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pdf-word-convert:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.pdf-word-convert:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Important note */
+.pdf-word-note {
+  margin-top: 25px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--surface, #334155);
+  color: var(--text, #f1f5f9);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.pdf-word-note p {
+  margin: 6px 0 0;
+  color: var(--muted, #94a3b8);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .pdf-word-tool {
+    padding: 20px 15px;
+    margin: 15px auto;
+  }
+
+  .pdf-word-heading h2 {
+    font-size: 22px;
+  }
+
+  .pdf-word-upload {
+    padding: 25px 12px;
+  }
+}

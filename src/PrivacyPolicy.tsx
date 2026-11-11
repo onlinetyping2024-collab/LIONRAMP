@@ -2,529 +2,948 @@
 import React from "react";
 
 const PrivacyPolicy: React.FC = () => {
-  const lastUpdated = "November 10, 2026";
+  const lastUpdated = "November 11, 2026";
 
   const sections = [
+    { id: "introduction", title: "1. Introduction" },
+    { id: "information", title: "2. Information We Collect" },
+    { id: "file-processing", title: "3. File Processing & Privacy" },
+    { id: "cookies", title: "4. Cookies & Tracking" },
+    { id: "advertising", title: "5. Google AdSense & Advertising" },
+    { id: "preferences", title: "6. Advertising Preferences" },
+    { id: "third-party", title: "7. Third-Party Services" },
+    { id: "security", title: "8. Data Security" },
+    { id: "children", title: "9. Children's Privacy" },
+    { id: "rights", title: "10. Your Privacy Rights" },
+    { id: "changes", title: "11. Changes to This Policy" },
+    { id: "contact", title: "12. Contact & Website" },
+  ];
+
+  const policySections = [
     {
       id: "introduction",
-      number: "01",
-      icon: "📋",
       title: "Introduction",
       content: (
         <>
           <p>
-            Welcome to <strong>LIONRAMP</strong> (https://lionramp.iceiy.com).
-            Your privacy is important to us. This Privacy Policy explains how
-            we collect, use, disclose, and protect information when you visit
-            our website and use our online tools and services.
+            Welcome to <strong>LIONRAMP</strong>. Your privacy is important to
+            us. This Privacy Policy explains how information may be collected,
+            used, stored, and protected when you visit and use our website.
           </p>
           <p>
-            By accessing or using LIONRAMP, you agree to the practices
-            described in this Privacy Policy.
+            LIONRAMP provides online tools designed to help users work with
+            images, documents, PDFs, and other digital content.
+          </p>
+          <p>
+            By accessing or using our website, you acknowledge that you have
+            read and understood this Privacy Policy.
           </p>
         </>
       ),
     },
     {
       id: "information",
-      number: "02",
-      icon: "🔎",
       title: "Information We Collect",
       content: (
         <>
           <p>
-            We may collect information that you voluntarily provide, such as
-            information submitted through website contact forms or other
-            available communication features, if enabled.
+            We aim to collect only the information reasonably necessary to
+            operate and improve our website.
           </p>
+          <ul>
+            <li>
+              <strong>Usage information:</strong> Browser type, device
+              information, pages visited, and general website interaction data.
+            </li>
+            <li>
+              <strong>Technical information:</strong> IP address, operating
+              system, browser settings, and diagnostic information that may be
+              provided through hosting or analytics services.
+            </li>
+            <li>
+              <strong>Voluntarily provided information:</strong> Information
+              you choose to submit through any available website feature.
+            </li>
+          </ul>
           <p>
-            We may also automatically collect certain technical information,
-            including browser type, device information, IP address, pages
-            visited, and usage statistics through cookies and analytics
-            services, where enabled.
+            We do not intentionally request sensitive personal information
+            through our online tools.
           </p>
         </>
       ),
     },
     {
       id: "file-processing",
-      number: "03",
-      icon: "📁",
-      title: "File Processing and User Privacy",
+      title: "File Processing & User Privacy",
       content: (
         <>
           <p>
-            LIONRAMP provides online tools for working with PDF documents,
-            images, audio, video, and other files. The processing and handling
-            of files may vary depending on the specific tool.
+            LIONRAMP offers tools for working with images, PDFs, documents,
+            and other files.
           </p>
           <p>
-            Users should avoid uploading confidential, sensitive, or personal
-            documents unless they understand how the relevant tool processes
-            and handles those files.
+            Depending on the individual tool, file processing may take place
+            directly in your browser or through an external processing service.
+            Please check the behavior of the specific tool before uploading
+            confidential or sensitive files.
           </p>
-          <p>
-            We do not claim that all file processing takes place locally in
-            your browser. Please refer to the functionality of each
-            individual tool.
-          </p>
+          <ul>
+            <li>
+              Do not upload files containing confidential or highly sensitive
+              information unless you understand how that tool processes them.
+            </li>
+            <li>
+              We do not intend to use your personal files for advertising
+              purposes.
+            </li>
+            <li>
+              Any third-party processing service may handle information
+              according to its own privacy policy.
+            </li>
+          </ul>
         </>
       ),
     },
     {
       id: "cookies",
-      number: "04",
-      icon: "🍪",
-      title: "Cookies and Tracking Technologies",
+      title: "Cookies & Tracking Technologies",
       content: (
         <>
           <p>
-            LIONRAMP may use cookies and similar technologies to improve
-            website functionality, understand visitor behavior, analyze
-            website traffic, and support advertising services.
+            Our website and third-party services may use cookies or similar
+            technologies to support website functionality, understand visitor
+            activity, and improve user experience.
           </p>
+          <p>Cookies may be used for purposes such as:</p>
+          <ul>
+            <li>Remembering certain website preferences.</li>
+            <li>Understanding website traffic and performance.</li>
+            <li>Supporting advertising and measurement services.</li>
+          </ul>
           <p>
             You can manage or disable cookies through your browser settings.
-            However, disabling certain cookies may affect some website
-            features.
+            However, disabling cookies may affect certain website features.
           </p>
         </>
       ),
     },
     {
       id: "advertising",
-      number: "05",
-      icon: "📢",
-      title: "Google AdSense and Third-Party Advertising",
+      title: "Google AdSense & Third-Party Advertising",
       content: (
         <>
           <p>
-            We may use Google AdSense or other third-party advertising
-            services to display advertisements on our website.
+            LIONRAMP may display advertisements provided by Google AdSense
+            and other advertising partners.
           </p>
           <p>
-            Google and its partners may use cookies, web beacons, or similar
-            technologies to serve advertisements based on your visits to this
-            website and other websites.
+            Third-party advertising providers may use cookies, web beacons,
+            or similar technologies to show advertisements based on previous
+            visits to this or other websites.
           </p>
           <p>
-            These technologies may help advertisers deliver relevant
-            advertisements and measure advertising performance.
+            Google and its advertising partners may process certain information
+            in accordance with their own privacy policies and applicable
+            advertising requirements.
           </p>
           <p>
-            Learn more about how Google uses information from websites that
-            use its services:
+            For more information about how Google handles data, visit:
           </p>
           <a
-            href="https://policies.google.com/technologies/partner-sites"
+            href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
-            className="pp-link"
           >
-            Google Partner Sites Policy <span>↗</span>
+            Google Privacy Policy
           </a>
         </>
       ),
     },
     {
       id: "preferences",
-      number: "06",
-      icon: "⚙️",
       title: "Google Advertising Preferences",
       content: (
         <>
           <p>
-            Google provides options that allow users to manage how
-            advertisements are personalized.
+            Users may be able to manage their Google advertising
+            personalization preferences through Google's account settings.
           </p>
           <p>
-            You can manage your Google advertising preferences through:
+            You can learn more about advertising controls and personalization
+            at:
           </p>
           <a
-            href="https://adssettings.google.com/"
+            href="https://myadcenter.google.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="pp-link"
           >
-            Google Ads Settings <span>↗</span>
+            Google My Ad Center
           </a>
+          <p>
+            You may also manage cookies through your browser settings and
+            available privacy controls.
+          </p>
         </>
       ),
     },
     {
       id: "third-party",
-      number: "07",
-      icon: "🔗",
       title: "Third-Party Services",
       content: (
         <>
           <p>
-            Our website may use third-party services for analytics,
-            advertising, website functionality, or other purposes.
+            LIONRAMP may use third-party services to support hosting,
+            advertising, analytics, security, and website functionality.
           </p>
           <p>
-            These third-party providers may collect information according to
-            their own privacy policies. We encourage users to review the
-            privacy policies of those services.
+            These providers may process certain technical or usage information
+            when you interact with our website.
+          </p>
+          <p>
+            Third-party services operate under their own terms and privacy
+            policies. We encourage users to review those policies when using
+            external services.
           </p>
         </>
       ),
     },
     {
       id: "security",
-      number: "08",
-      icon: "🛡️",
       title: "Data Security",
       content: (
-        <p>
-          We take reasonable measures to protect information associated with
-          our website. However, no method of electronic transmission or
-          storage is completely secure, and we cannot guarantee absolute
-          security.
-        </p>
+        <>
+          <p>
+            We take reasonable steps to protect our website and the information
+            handled through its services.
+          </p>
+          <p>
+            However, no website, internet connection, or electronic storage
+            method can be guaranteed to be completely secure.
+          </p>
+          <p>
+            Users should take appropriate precautions when accessing online
+            services and sharing personal or confidential information.
+          </p>
+        </>
       ),
     },
     {
       id: "children",
-      number: "09",
-      icon: "👨‍👩‍👧",
       title: "Children's Privacy",
       content: (
-        <p>
-          LIONRAMP is not intended to knowingly collect personal information
-          from children under the age of 13. If we become aware that personal
-          information has been collected from a child without appropriate
-          authorization, we will take reasonable steps to address the
-          situation.
-        </p>
+        <>
+          <p>
+            LIONRAMP is not intentionally designed to collect personal
+            information from children under the age of 13.
+          </p>
+          <p>
+            We do not knowingly collect personal information from children
+            under 13 without appropriate parental consent where required by
+            applicable law.
+          </p>
+          <p>
+            If you believe that a child has provided personal information
+            through our website, appropriate steps should be taken to address
+            the issue.
+          </p>
+        </>
       ),
     },
     {
       id: "rights",
-      number: "10",
-      icon: "🔐",
       title: "Your Privacy Rights",
       content: (
         <>
           <p>
-            Depending on your location and applicable laws, you may have
-            rights to access, correct, or request deletion of personal
-            information associated with you.
+            Depending on your location and applicable privacy laws, you may
+            have rights regarding your personal information.
           </p>
+          <ul>
+            <li>The right to request access to personal information.</li>
+            <li>The right to request correction of inaccurate information.</li>
+            <li>The right to request deletion where legally applicable.</li>
+            <li>The right to object to or restrict certain data processing.</li>
+            <li>The right to manage cookies and advertising preferences.</li>
+          </ul>
           <p>
-            You may use the website address provided below to find information
-            about LIONRAMP and available ways to contact the website operator.
+            These rights may vary depending on the laws applicable to your
+            location and the services involved.
           </p>
         </>
       ),
     },
     {
       id: "changes",
-      number: "11",
-      icon: "📝",
       title: "Changes to This Privacy Policy",
       content: (
-        <p>
-          We may update this Privacy Policy from time to time. Any changes
-          will be published on this page with an updated revision date.
-        </p>
+        <>
+          <p>
+            We may update this Privacy Policy from time to time to reflect
+            changes to our website, services, technology, or legal requirements.
+          </p>
+          <p>
+            Any updates will be published on this page with a revised
+            "Last Updated" date.
+          </p>
+          <p>
+            We encourage visitors to review this page periodically to stay
+            informed about our privacy practices.
+          </p>
+        </>
       ),
     },
     {
       id: "contact",
-      number: "12",
-      icon: "🌐",
       title: "Contact & Website",
       content: (
         <>
           <p>
-            If you have any questions, concerns, or requests regarding this
-            Privacy Policy, please visit our website.
+            If you have questions or concerns about this Privacy Policy or
+            LIONRAMP's privacy practices, please visit our website for
+            available information and support.
           </p>
-          <a
-            href="https://lionramp.iceiy.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pp-link"
-          >
-            https://lionramp.iceiy.com <span>↗</span>
-          </a>
+          <div className="pp-website-link">
+            <span className="pp-link-icon">↗</span>
+            <div>
+              <span className="pp-link-label">Official Website</span>
+              <a
+                href="https://lionramp.iceiy.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://lionramp.iceiy.com
+              </a>
+            </div>
+          </div>
         </>
       ),
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#f6f7fb] text-[#25263a]">
+    <div className="pp-page">
+      <style>{`
+        .pp-page {
+          --pp-primary: #7558f6;
+          --pp-primary-dark: #5940d8;
+          --pp-text: #252b40;
+          --pp-muted: #727b91;
+          --pp-border: #e9eaf2;
+          min-height: 100vh;
+          background: #f5f6fb;
+          color: var(--pp-text);
+          font-family: Inter, Arial, sans-serif;
+          padding-bottom: 60px;
+        }
 
-      {/* HERO */}
-      <header className="relative overflow-hidden bg-[#111126] text-white">
-        <div className="absolute -top-40 -right-20 h-96 w-96 rounded-full bg-violet-600/20 blur-3xl" />
-        <div className="absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
+        .pp-page * {
+          box-sizing: border-box;
+        }
 
-        <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-12 md:px-8 md:pb-24 md:pt-16">
+        .pp-hero {
+          position: relative;
+          overflow: hidden;
+          background: linear-gradient(125deg, #111329 0%, #21194b 55%, #4630a0 100%);
+          color: #fff;
+          padding: 70px 24px 100px;
+        }
 
-          <div className="mb-12 flex items-center justify-between">
-            <a
-              href="https://lionramp.iceiy.com"
-              className="flex items-center gap-3 no-underline"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/10 text-xl">
-                🦁
-              </div>
-              <div>
-                <div className="text-lg font-black tracking-wider text-white">
-                  LIONRAMP
-                </div>
-                <div className="text-[10px] tracking-[0.25em] text-gray-400">
-                  ONLINE TOOLS
-                </div>
-              </div>
-            </a>
+        .pp-hero::before {
+          content: "";
+          position: absolute;
+          width: 420px;
+          height: 420px;
+          border-radius: 50%;
+          background: rgba(143, 108, 255, 0.18);
+          filter: blur(75px);
+          right: -100px;
+          top: -180px;
+          pointer-events: none;
+        }
 
-            <div className="hidden rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-gray-300 sm:block">
-              Privacy Center
-            </div>
+        .pp-hero::after {
+          content: "";
+          position: absolute;
+          width: 320px;
+          height: 320px;
+          border-radius: 50%;
+          background: rgba(90, 116, 255, 0.14);
+          filter: blur(70px);
+          left: -120px;
+          bottom: -200px;
+          pointer-events: none;
+        }
+
+        .pp-hero-inner {
+          position: relative;
+          z-index: 1;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+
+        .pp-brand {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 15px;
+          font-weight: 900;
+          letter-spacing: 2.5px;
+          color: #fff;
+          margin-bottom: 40px;
+        }
+
+        .pp-brand-icon {
+          display: grid;
+          place-items: center;
+          width: 34px;
+          height: 34px;
+          border-radius: 10px;
+          background: linear-gradient(135deg, #9c83ff, #6847ec);
+          box-shadow: 0 5px 20px rgba(115, 83, 255, .35);
+          font-size: 18px;
+        }
+
+        .pp-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 7px 13px;
+          border: 1px solid rgba(255,255,255,.18);
+          background: rgba(255,255,255,.08);
+          border-radius: 30px;
+          color: #d5caff;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 1.1px;
+          text-transform: uppercase;
+          margin-bottom: 18px;
+        }
+
+        .pp-eyebrow-dot {
+          width: 7px;
+          height: 7px;
+          background: #9e86ff;
+          border-radius: 50%;
+        }
+
+        .pp-hero h1 {
+          margin: 0;
+          max-width: 750px;
+          font-size: clamp(36px, 6vw, 62px);
+          line-height: 1.08;
+          font-weight: 850;
+          letter-spacing: -2px;
+        }
+
+        .pp-hero h1 span {
+          display: block;
+          color: #aa98ff;
+        }
+
+        .pp-hero-description {
+          max-width: 650px;
+          margin: 22px 0 28px;
+          color: #d2d1e5;
+          font-size: 16px;
+          line-height: 1.85;
+        }
+
+        .pp-hero-meta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .pp-meta-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 14px;
+          border: 1px solid rgba(255,255,255,.14);
+          background: rgba(255,255,255,.07);
+          border-radius: 9px;
+          color: #e2defb;
+          font-size: 12px;
+        }
+
+        .pp-layout {
+          position: relative;
+          z-index: 2;
+          max-width: 1100px;
+          margin: -42px auto 0;
+          padding: 0 22px;
+          display: grid;
+          grid-template-columns: 250px minmax(0, 1fr);
+          gap: 25px;
+          align-items: start;
+        }
+
+        .pp-sidebar {
+          position: sticky;
+          top: 25px;
+          background: #fff;
+          border: 1px solid var(--pp-border);
+          border-radius: 17px;
+          padding: 22px 16px;
+          box-shadow: 0 12px 40px rgba(28, 32, 68, .06);
+        }
+
+        .pp-sidebar-title {
+          padding: 0 10px 15px;
+          font-size: 11px;
+          font-weight: 900;
+          letter-spacing: 1.5px;
+          color: #9299aa;
+          text-transform: uppercase;
+        }
+
+        .pp-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .pp-nav a {
+          display: block;
+          padding: 10px 11px;
+          border-radius: 8px;
+          color: #687087;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1.5;
+          text-decoration: none;
+          transition: .2s ease;
+        }
+
+        .pp-nav a:hover {
+          color: var(--pp-primary-dark);
+          background: #f2efff;
+          transform: translateX(3px);
+        }
+
+        .pp-content {
+          min-width: 0;
+        }
+
+        .pp-intro {
+          background: linear-gradient(120deg, #f0edff, #f9f8ff);
+          border: 1px solid #e4defe;
+          border-radius: 15px;
+          padding: 22px 24px;
+          margin-bottom: 18px;
+          display: flex;
+          gap: 15px;
+          align-items: flex-start;
+        }
+
+        .pp-intro-icon {
+          flex-shrink: 0;
+          display: grid;
+          place-items: center;
+          width: 38px;
+          height: 38px;
+          border-radius: 11px;
+          background: #e2dafe;
+          color: #6246d5;
+          font-size: 20px;
+        }
+
+        .pp-intro strong {
+          display: block;
+          margin-bottom: 5px;
+          color: #382b7d;
+          font-size: 14px;
+        }
+
+        .pp-intro p {
+          margin: 0;
+          color: #625b83;
+          font-size: 13px;
+          line-height: 1.75;
+        }
+
+        .pp-section {
+          scroll-margin-top: 25px;
+          background: #fff;
+          border: 1px solid var(--pp-border);
+          border-radius: 15px;
+          padding: 27px 29px;
+          margin-bottom: 15px;
+          box-shadow: 0 5px 22px rgba(28, 32, 68, .025);
+          transition: box-shadow .2s ease, border-color .2s ease;
+        }
+
+        .pp-section:hover {
+          border-color: #ded7ff;
+          box-shadow: 0 8px 28px rgba(65, 49, 130, .06);
+        }
+
+        .pp-section-heading {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 17px;
+        }
+
+        .pp-section-number {
+          display: grid;
+          place-items: center;
+          flex-shrink: 0;
+          width: 35px;
+          height: 35px;
+          border-radius: 10px;
+          background: #f0edff;
+          color: #684bdf;
+          font-size: 13px;
+          font-weight: 900;
+        }
+
+        .pp-section h2 {
+          margin: 0;
+          color: #252b40;
+          font-size: 18px;
+          font-weight: 800;
+          letter-spacing: -.3px;
+        }
+
+        .pp-section-body {
+          color: #687087;
+          font-size: 13.5px;
+          line-height: 1.9;
+        }
+
+        .pp-section-body p {
+          margin: 0 0 13px;
+        }
+
+        .pp-section-body p:last-child {
+          margin-bottom: 0;
+        }
+
+        .pp-section-body strong {
+          color: #343b52;
+          font-weight: 750;
+        }
+
+        .pp-section-body ul {
+          margin: 9px 0 16px;
+          padding-left: 22px;
+        }
+
+        .pp-section-body li {
+          padding-left: 5px;
+          margin-bottom: 8px;
+        }
+
+        .pp-section-body li::marker {
+          color: #8065ec;
+        }
+
+        .pp-section-body a {
+          display: inline-block;
+          color: #674ce0;
+          font-weight: 700;
+          text-decoration: none;
+          border-bottom: 1px solid #d5ccff;
+          overflow-wrap: anywhere;
+        }
+
+        .pp-section-body a:hover {
+          color: #4530b6;
+          border-color: #674ce0;
+        }
+
+        .pp-website-link {
+          display: flex;
+          align-items: center;
+          gap: 13px;
+          padding: 17px;
+          margin-top: 17px;
+          border: 1px solid #e6e0ff;
+          border-radius: 12px;
+          background: #f8f6ff;
+        }
+
+        .pp-link-icon {
+          display: grid;
+          place-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 11px;
+          background: #e9e2ff;
+          color: #674ce0;
+          font-size: 20px;
+        }
+
+        .pp-link-label {
+          display: block;
+          margin-bottom: 4px;
+          color: #88819e;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+
+        .pp-website-link a {
+          font-size: 13px;
+        }
+
+        .pp-footer {
+          max-width: 1100px;
+          margin: 32px auto 0;
+          padding: 0 22px;
+        }
+
+        .pp-footer-inner {
+          padding: 30px;
+          text-align: center;
+          border-radius: 17px;
+          color: #fff;
+          background: linear-gradient(120deg, #17152f, #33236f);
+        }
+
+        .pp-footer-logo {
+          font-size: 17px;
+          font-weight: 900;
+          letter-spacing: 3px;
+          margin-bottom: 9px;
+        }
+
+        .pp-footer-inner p {
+          margin: 0;
+          color: #c7c2e2;
+          font-size: 12px;
+          line-height: 1.8;
+        }
+
+        .pp-footer-inner a {
+          display: inline-block;
+          margin-top: 14px;
+          color: #c2b3ff;
+          font-size: 12px;
+          font-weight: 700;
+          text-decoration: none;
+        }
+
+        .pp-mobile-nav {
+          display: none;
+        }
+
+        @media (max-width: 850px) {
+          .pp-layout {
+            grid-template-columns: 1fr;
+            gap: 17px;
+          }
+
+          .pp-sidebar {
+            display: none;
+          }
+
+          .pp-mobile-nav {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            background: #fff;
+            border: 1px solid var(--pp-border);
+            border-radius: 12px;
+            padding: 11px;
+            margin-bottom: 16px;
+            scrollbar-width: thin;
+          }
+
+          .pp-mobile-nav a {
+            display: inline-block;
+            margin-right: 7px;
+            padding: 8px 11px;
+            border-radius: 7px;
+            background: #f3f1ff;
+            color: #5e48bd;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .pp-hero {
+            padding: 44px 20px 78px;
+          }
+
+          .pp-brand {
+            margin-bottom: 30px;
+          }
+
+          .pp-hero h1 {
+            letter-spacing: -1.3px;
+          }
+
+          .pp-hero-description {
+            font-size: 14px;
+          }
+
+          .pp-layout {
+            padding: 0 13px;
+            margin-top: -30px;
+          }
+
+          .pp-section {
+            padding: 21px 18px;
+            border-radius: 13px;
+          }
+
+          .pp-section h2 {
+            font-size: 16px;
+          }
+
+          .pp-section-body {
+            font-size: 13px;
+          }
+
+          .pp-intro {
+            padding: 17px;
+          }
+
+          .pp-footer {
+            padding: 0 13px;
+          }
+
+          .pp-footer-inner {
+            padding: 25px 18px;
+          }
+        }
+
+        @media print {
+          .pp-sidebar,
+          .pp-mobile-nav {
+            display: none !important;
+          }
+
+          .pp-layout {
+            display: block;
+            margin: 20px auto;
+          }
+
+          .pp-hero {
+            padding: 30px;
+          }
+
+          .pp-section {
+            break-inside: avoid;
+            box-shadow: none;
+          }
+        }
+      `}</style>
+
+      <header className="pp-hero">
+        <div className="pp-hero-inner">
+          <div className="pp-brand">
+            <span className="pp-brand-icon">L</span>
+            LIONRAMP
           </div>
 
-          <div className="max-w-3xl">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-violet-300">
-              <span>✦</span>
-              Privacy & Security
+          <div className="pp-eyebrow">
+            <span className="pp-eyebrow-dot" />
+            YOUR PRIVACY MATTERS
+          </div>
+
+          <h1>
+            Privacy <span>Policy.</span>
+          </h1>
+
+          <p className="pp-hero-description">
+            Transparency matters. Learn how LIONRAMP handles information,
+            protects your privacy, and provides a safer experience while
+            using our online tools.
+          </p>
+
+          <div className="pp-hero-meta">
+            <div className="pp-meta-item">
+              <span>◷</span>
+              Last Updated: {lastUpdated}
             </div>
-
-            <h1 className="mb-6 text-4xl font-black tracking-tight text-white sm:text-5xl md:text-7xl">
-              Privacy <span className="text-violet-400">Policy.</span>
-            </h1>
-
-            <p className="max-w-2xl text-sm leading-7 text-gray-300 md:text-base">
-              Transparency matters. Discover how information may be
-              collected, used, and handled when you explore and use
-              LIONRAMP online tools.
-            </p>
-
-            <div className="mt-9 flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-3">
-                <span className="text-violet-300">◷</span>
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider text-gray-400">
-                    Last updated
-                  </div>
-                  <div className="text-xs font-semibold text-white">
-                    {lastUpdated}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-3">
-                <span className="text-green-400">●</span>
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider text-gray-400">
-                    Document
-                  </div>
-                  <div className="text-xs font-semibold text-white">
-                    12 Policy Sections
-                  </div>
-                </div>
-              </div>
+            <div className="pp-meta-item">
+              <span>▤</span>
+              12 Policy Sections
+            </div>
+            <div className="pp-meta-item">
+              <span>✓</span>
+              Privacy Information
             </div>
           </div>
         </div>
       </header>
 
-      {/* MAIN CONTENT */}
-      <main className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-16">
-
-        <div className="mb-10 rounded-2xl border border-violet-100 bg-white p-5 shadow-sm md:p-7">
-          <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-2xl">
-              🔒
-            </div>
-            <div>
-              <h2 className="mb-2 text-lg font-bold text-[#17172f]">
-                Your Privacy Matters
-              </h2>
-              <p className="text-sm leading-7 text-gray-500">
-                This Privacy Policy describes important information about
-                privacy, cookies, advertising, and the use of LIONRAMP online
-                tools. Please read it carefully to understand our practices.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[260px_minmax(0,1fr)]">
-
-          {/* SIDEBAR */}
-          <aside className="lg:sticky lg:top-6">
-            <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-              <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-sm font-extrabold text-[#17172f]">
-                  On This Page
-                </h2>
-                <span className="rounded-md bg-violet-50 px-2 py-1 text-[10px] font-bold text-violet-600">
-                  12 ITEMS
-                </span>
-              </div>
-
-              <nav className="flex gap-2 overflow-x-auto pb-2 lg:block lg:space-y-1 lg:overflow-visible lg:pb-0">
-                {sections.map((section) => (
-                  <a
-                    key={section.id}
-                    href={`#${section.id}`}
-                    className="flex shrink-0 items-center gap-3 rounded-lg px-3 py-2.5 text-xs font-medium text-gray-500 transition-all hover:bg-violet-50 hover:text-violet-700 lg:w-full"
-                  >
-                    <span className="text-[10px] font-bold text-violet-400">
-                      {section.number}
-                    </span>
-                    <span className="whitespace-nowrap lg:whitespace-normal">
-                      {section.title}
-                    </span>
-                  </a>
-                ))}
-              </nav>
-
-              <div className="mt-5 hidden border-t border-gray-100 pt-5 lg:block">
-                <div className="rounded-xl bg-[#17172f] p-4 text-white">
-                  <div className="mb-2 text-lg">🦁</div>
-                  <p className="mb-2 text-sm font-bold">LIONRAMP</p>
-                  <p className="text-xs leading-5 text-gray-400">
-                    Simple and useful online tools for your digital tasks.
-                  </p>
-                  <a
-                    href="https://lionramp.iceiy.com"
-                    className="mt-3 inline-block text-xs font-bold text-violet-300 hover:text-white"
-                  >
-                    Visit Website ↗
-                  </a>
-                </div>
-              </div>
-            </div>
-          </aside>
-
-          {/* POLICY SECTIONS */}
-          <div className="min-w-0 space-y-5">
+      <main className="pp-layout">
+        <aside className="pp-sidebar">
+          <div className="pp-sidebar-title">On This Page</div>
+          <nav className="pp-nav">
             {sections.map((section) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className="scroll-mt-8 rounded-2xl border border-gray-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:p-7 md:p-8"
-              >
-                <div className="mb-5 flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-50 to-indigo-50 text-xl">
-                    {section.icon}
-                  </div>
-
-                  <div className="min-w-0 flex-1">
-                    <div className="mb-1 text-[10px] font-extrabold tracking-[0.2em] text-violet-500">
-                      SECTION {section.number}
-                    </div>
-                    <h2 className="text-lg font-extrabold leading-snug text-[#17172f] sm:text-xl">
-                      {section.title}
-                    </h2>
-                  </div>
-                </div>
-
-                <div className="policy-premium-content border-t border-gray-100 pt-5 text-sm leading-7 text-gray-600 md:text-[15px]">
-                  {section.content}
-                </div>
-              </section>
-            ))}
-
-            {/* BOTTOM FOOTER CARD */}
-            <div className="overflow-hidden rounded-2xl bg-[#111126] p-7 text-center text-white md:p-10">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-3xl">
-                🦁
-              </div>
-
-              <h2 className="mb-2 text-2xl font-black tracking-wide">
-                LIONRAMP
-              </h2>
-
-              <p className="mx-auto mb-6 max-w-md text-sm leading-6 text-gray-400">
-                Explore useful online tools designed to make your digital
-                work easier, faster, and more convenient.
-              </p>
-
-              <a
-                href="https://lionramp.iceiy.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-bold text-white transition-all hover:bg-violet-500 hover:shadow-lg hover:shadow-violet-500/20"
-              >
-                Explore LIONRAMP <span>↗</span>
+              <a key={section.id} href={`#${section.id}`}>
+                {section.title}
               </a>
+            ))}
+          </nav>
+        </aside>
 
-              <div className="mt-8 border-t border-white/10 pt-5">
-                <p className="text-xs text-gray-500">
-                  © {new Date().getFullYear()} LIONRAMP. All Rights Reserved.
-                </p>
-              </div>
+        <div className="pp-content">
+          <nav className="pp-mobile-nav">
+            {sections.map((section) => (
+              <a key={section.id} href={`#${section.id}`}>
+                {section.title}
+              </a>
+            ))}
+          </nav>
+
+          <div className="pp-intro">
+            <div className="pp-intro-icon">ⓘ</div>
+            <div>
+              <strong>Your privacy is important to us.</strong>
+              <p>
+                Please read this policy carefully to understand how
+                information may be handled when you use LIONRAMP.
+              </p>
             </div>
           </div>
+
+          {policySections.map((section, index) => (
+            <section
+              className="pp-section"
+              id={section.id}
+              key={section.id}
+            >
+              <div className="pp-section-heading">
+                <div className="pp-section-number">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <h2>{section.title}</h2>
+              </div>
+
+              <div className="pp-section-body">
+                {section.content}
+              </div>
+            </section>
+          ))}
         </div>
       </main>
 
-      {/* CUSTOM STYLES */}
-      <style>{`
-        html {
-          scroll-behavior: smooth;
-        }
-
-        .policy-premium-content p {
-          margin-bottom: 14px;
-        }
-
-        .policy-premium-content p:last-child {
-          margin-bottom: 0;
-        }
-
-        .policy-premium-content strong {
-          color: #17172f;
-          font-weight: 800;
-        }
-
-        .policy-premium-content a:not(.pp-link) {
-          color: #7046d3;
-          font-weight: 600;
-          overflow-wrap: anywhere;
-          text-decoration: none;
-        }
-
-        .policy-premium-content a:not(.pp-link):hover {
-          text-decoration: underline;
-        }
-
-        .pp-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          margin-top: 7px;
-          border: 1px solid #e9e2ff;
-          border-radius: 10px;
-          background: #f7f4ff;
-          padding: 11px 15px;
-          color: #6941c6;
-          font-size: 13px;
-          font-weight: 800;
-          text-decoration: none;
-          transition: all 0.2s ease;
-          overflow-wrap: anywhere;
-        }
-
-        .pp-link:hover {
-          border-color: #c9b8ff;
-          background: #eee8ff;
-          transform: translateY(-2px);
-        }
-
-        @media (max-width: 640px) {
-          .policy-premium-content {
-            font-size: 13px;
-            line-height: 1.9;
-          }
-        }
-      `}</style>
+      <footer className="pp-footer">
+        <div className="pp-footer-inner">
+          <div className="pp-footer-logo">LIONRAMP</div>
+          <p>
+            Simple. Useful. Powerful online tools.
+            <br />
+            Thank you for trusting LIONRAMP.
+          </p>
+          <a
+            href="https://lionramp.iceiy.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            lionramp.iceiy.com
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };

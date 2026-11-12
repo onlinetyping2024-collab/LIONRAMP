@@ -4,6 +4,7 @@ import type { ChangeEvent } from 'react'
 
 import './App.css'
 import lionLogo from './assets/lionramp-logo.png'
+import CookieConsent from './CookieConsent'
 
 import ImageConverter from './tools/ImageConverter'
 import ImageCompressor from './tools/ImageCompressor'
@@ -246,6 +247,7 @@ function App() {
         </main>
 
         {footer}
+        <CookieConsent />
       </div>
     )
   }
@@ -267,6 +269,7 @@ function App() {
         </main>
 
         {footer}
+        <CookieConsent />
       </div>
     )
   }
@@ -415,6 +418,7 @@ function App() {
       </main>
 
       {footer}
+      <CookieConsent />
     </div>
   )
 }

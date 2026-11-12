@@ -1,3 +1,4 @@
+
 import { useEffect, useMemo, useState } from 'react'
 import type { ChangeEvent } from 'react'
 
@@ -22,6 +23,8 @@ import PrivacyPolicy from './PrivacyPolicy'
 import AboutUs from './AboutUs'
 import TermsAndConditions from './TermsAndConditions'
 import ContactUs from './ContactUs'
+import FAQ from './FAQ'
+import Disclaimer from './Disclaimer'
 
 type Tool = {
   name: string
@@ -31,88 +34,21 @@ type Tool = {
 }
 
 const tools: Tool[] = [
-  {
-    name: 'PDF to Word',
-    category: 'PDF',
-    icon: '📄',
-    description: 'Convert PDF files into editable Word documents.',
-  },
-  {
-    name: 'Word to PDF',
-    category: 'PDF',
-    icon: '📝',
-    description: 'Turn Word documents into PDF files.',
-  },
-  {
-    name: 'Merge PDF',
-    category: 'PDF',
-    icon: '📚',
-    description: 'Combine multiple PDF files into one document.',
-  },
-  {
-    name: 'Split PDF',
-    category: 'PDF',
-    icon: '✂️',
-    description: 'Separate pages from a PDF document.',
-  },
-  {
-    name: 'Text to PDF',
-    category: 'PDF',
-    icon: '📰',
-    description: 'Turn your written text into a downloadable PDF.',
-  },
-  {
-    name: 'Image Converter',
-    category: 'Image',
-    icon: '🖼️',
-    description: 'Convert images between PNG, JPG and WEBP formats.',
-  },
-  {
-    name: 'Image Compressor',
-    category: 'Image',
-    icon: '🗜️',
-    description: 'Reduce image file size while maintaining quality.',
-  },
-  {
-    name: 'Image Resizer',
-    category: 'Image',
-    icon: '📐',
-    description: 'Resize images to your preferred dimensions.',
-  },
-  {
-    name: 'Video Converter',
-    category: 'Video',
-    icon: '🎬',
-    description: 'Convert video files between supported formats.',
-  },
-  {
-    name: 'Audio Converter',
-    category: 'Audio',
-    icon: '🎵',
-    description: 'Convert audio files into different formats.',
-  },
-  {
-    name: 'ZIP Extractor',
-    category: 'Utility',
-    icon: '📦',
-    description: 'Extract files from ZIP archives.',
-  },
-  {
-    name: 'Unit Converter',
-    category: 'Utility',
-    icon: '🔄',
-    description: 'Convert common measurements and units.',
-  },
+  { name: 'PDF to Word', category: 'PDF', icon: '📄', description: 'Convert PDF files into editable Word documents.' },
+  { name: 'Word to PDF', category: 'PDF', icon: '📝', description: 'Turn Word documents into PDF files.' },
+  { name: 'Merge PDF', category: 'PDF', icon: '📚', description: 'Combine multiple PDF files into one document.' },
+  { name: 'Split PDF', category: 'PDF', icon: '✂️', description: 'Separate pages from a PDF document.' },
+  { name: 'Text to PDF', category: 'PDF', icon: '📰', description: 'Turn your written text into a downloadable PDF.' },
+  { name: 'Image Converter', category: 'Image', icon: '🖼️', description: 'Convert images between PNG, JPG and WEBP formats.' },
+  { name: 'Image Compressor', category: 'Image', icon: '🗜️', description: 'Reduce image file size while maintaining quality.' },
+  { name: 'Image Resizer', category: 'Image', icon: '📐', description: 'Resize images to your preferred dimensions.' },
+  { name: 'Video Converter', category: 'Video', icon: '🎬', description: 'Convert video files between supported formats.' },
+  { name: 'Audio Converter', category: 'Audio', icon: '🎵', description: 'Convert audio files into different formats.' },
+  { name: 'ZIP Extractor', category: 'Utility', icon: '📦', description: 'Extract files from ZIP archives.' },
+  { name: 'Unit Converter', category: 'Utility', icon: '🔄', description: 'Convert common measurements and units.' },
 ]
 
-const categories = [
-  'All Tools',
-  'PDF',
-  'Image',
-  'Video',
-  'Audio',
-  'Utility',
-]
+const categories = ['All Tools', 'PDF', 'Image', 'Video', 'Audio', 'Utility']
 
 const toolRoutes: Record<string, string> = {
   'PDF to Word': 'pdf-to-word',
@@ -129,31 +65,22 @@ const toolRoutes: Record<string, string> = {
   'Unit Converter': 'unit-converter',
 }
 
-const routeTools: Record<string, string> = {
-  'pdf-to-word': 'PDF to Word',
-  'word-to-pdf': 'Word to PDF',
-  'merge-pdf': 'Merge PDF',
-  'split-pdf': 'Split PDF',
-  'text-to-pdf': 'Text to PDF',
-  'image-converter': 'Image Converter',
-  'image-compressor': 'Image Compressor',
-  'image-resizer': 'Image Resizer',
-  'video-converter': 'Video Converter',
-  'audio-converter': 'Audio Converter',
-  'zip-extractor': 'ZIP Extractor',
-  'unit-converter': 'Unit Converter',
-}
+const routeTools: Record<string, string> = Object.fromEntries(
+  Object.entries(toolRoutes).map(([name, slug]) => [slug, name])
+)
 
 const pageTitles: Record<string, string> = {
   about: 'About LIONRAMP',
   terms: 'Terms & Conditions',
   contact: 'Contact LIONRAMP',
+  faq: 'Frequently Asked Questions',
+  disclaimer: 'Disclaimer',
+  'privacy-policy': 'Privacy Policy',
 }
 
 function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All Tools')
-  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false)
 
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('lionramp-theme') === 'dark'
@@ -172,38 +99,13 @@ function App() {
   })
 
   useEffect(() => {
-    localStorage.setItem(
-      'lionramp-theme',
-      darkMode ? 'dark' : 'light'
-    )
+    localStorage.setItem('lionramp-theme', darkMode ? 'dark' : 'light')
 
     document.documentElement.setAttribute(
       'data-theme',
       darkMode ? 'dark' : 'light'
     )
   }, [darkMode])
-
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setShowPrivacyPolicy(false)
-      }
-    }
-
-    window.addEventListener('keydown', handleEscape)
-
-    return () => {
-      window.removeEventListener('keydown', handleEscape)
-    }
-  }, [])
-
-  useEffect(() => {
-    document.body.style.overflow = showPrivacyPolicy ? 'hidden' : ''
-
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [showPrivacyPolicy])
 
   useEffect(() => {
     if (activePage) {
@@ -237,136 +139,96 @@ function App() {
       return
     }
 
-    const url =
-      `${window.location.origin}${window.location.pathname}?tool=${route}`
-
+    const url = `${window.location.pathname}?tool=${route}`
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   const renderActiveTool = () => {
     switch (activeTool) {
-      case 'PDF to Word':
-        return <PdfToWord />
-
-      case 'Word to PDF':
-        return <WordToPdf />
-
-      case 'Merge PDF':
-        return <MergePdf />
-
-      case 'Split PDF':
-        return <SplitPdf />
-
-      case 'Text to PDF':
-        return <TextToPdf />
-
-      case 'Image Converter':
-        return <ImageConverter />
-
-      case 'Image Compressor':
-        return <ImageCompressor />
-
-      case 'Image Resizer':
-        return <ImageResizer />
-
-      case 'Video Converter':
-        return <VideoConverter />
-
-      case 'Audio Converter':
-        return <AudioConverter />
-
-      case 'ZIP Extractor':
-        return <ZipExtractor />
-
-      case 'Unit Converter':
-        return <UnitConverter />
-
-      default:
-        return <p>Tool not found. Please return to the homepage.</p>
+      case 'PDF to Word': return <PdfToWord />
+      case 'Word to PDF': return <WordToPdf />
+      case 'Merge PDF': return <MergePdf />
+      case 'Split PDF': return <SplitPdf />
+      case 'Text to PDF': return <TextToPdf />
+      case 'Image Converter': return <ImageConverter />
+      case 'Image Compressor': return <ImageCompressor />
+      case 'Image Resizer': return <ImageResizer />
+      case 'Video Converter': return <VideoConverter />
+      case 'Audio Converter': return <AudioConverter />
+      case 'ZIP Extractor': return <ZipExtractor />
+      case 'Unit Converter': return <UnitConverter />
+      default: return <p>Tool not found. Please return to the homepage.</p>
     }
   }
 
   const renderActivePage = () => {
     switch (activePage) {
-      case 'about':
-        return <AboutUs />
-
-      case 'terms':
-        return <TermsAndConditions />
-
-      case 'contact':
-        return <ContactUs />
-
-      default:
-        return null
+      case 'about': return <AboutUs />
+      case 'terms': return <TermsAndConditions />
+      case 'contact': return <ContactUs />
+      case 'faq': return <FAQ />
+      case 'disclaimer': return <Disclaimer />
+      case 'privacy-policy': return <PrivacyPolicy />
+      default: return null
     }
   }
-
-  const privacyModal = showPrivacyPolicy ? (
-    <div
-      className="privacy-modal-overlay"
-      onClick={() => setShowPrivacyPolicy(false)}
-    >
-      <div
-        className="privacy-modal-content"
-        onClick={(event) => event.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Privacy Policy"
-      >
-        <button
-          className="privacy-close-button"
-          onClick={() => setShowPrivacyPolicy(false)}
-          aria-label="Close Privacy Policy"
-        >
-          ✕
-        </button>
-
-        <PrivacyPolicy />
-      </div>
-    </div>
-  ) : null
 
   const footerLinks = (
     <div className="footer-page-links">
       <a href="/">Home</a>
       <a href="/?page=about">About Us</a>
-      <a href="/?page=terms">Terms & Conditions</a>
+      <a href="/?page=faq">FAQ</a>
       <a href="/?page=contact">Contact Us</a>
-      <button
-        className="privacy-footer-link"
-        onClick={() => setShowPrivacyPolicy(true)}
-      >
-        Privacy Policy
-      </button>
+      <a href="/?page=privacy-policy">Privacy Policy</a>
+      <a href="/?page=terms">Terms & Conditions</a>
+      <a href="/?page=disclaimer">Disclaimer</a>
     </div>
+  )
+
+  const header = (
+    <header className="site-header">
+      <div className="header-content">
+        <a href="/" className="brand">
+          <img src={lionLogo} alt="LIONRAMP Logo" className="brand-logo" />
+          <span>LIONRAMP</span>
+        </a>
+
+        <div className="header-actions">
+          <button
+            className="theme-toggle"
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? '☀️ Light' : '🌙 Dark'}
+          </button>
+        </div>
+      </div>
+    </header>
+  )
+
+  const footer = (
+    <footer className="site-footer">
+      <div className="footer-content">
+        <div className="footer-brand">
+          <img src={lionLogo} alt="LIONRAMP Logo" />
+          <div>
+            <h3>LIONRAMP</h3>
+            <p>Powerful Tools. Simple Solutions.</p>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} LIONRAMP. All rights reserved.</p>
+          {footerLinks}
+        </div>
+      </div>
+    </footer>
   )
 
   // Individual tool page
   if (activeTool) {
     return (
       <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
-        <header className="site-header">
-          <div className="header-content">
-            <a href="/" className="brand">
-              <img
-                src={lionLogo}
-                alt="LIONRAMP Logo"
-                className="brand-logo"
-              />
-              <span>LIONRAMP</span>
-            </a>
-
-            <div className="header-actions">
-              <button
-                className="theme-toggle"
-                onClick={() => setDarkMode(!darkMode)}
-              >
-                {darkMode ? '☀️ Light' : '🌙 Dark'}
-              </button>
-            </div>
-          </div>
-        </header>
+        {header}
 
         <main className="tool-page">
           <button
@@ -383,44 +245,16 @@ function App() {
           </div>
         </main>
 
-        <footer className="site-footer">
-          <div className="footer-content">
-            <p>© {new Date().getFullYear()} LIONRAMP. All rights reserved.</p>
-            <p>Powerful Tools. Simple Solutions.</p>
-            {footerLinks}
-          </div>
-        </footer>
-
-        {privacyModal}
+        {footer}
       </div>
     )
   }
 
-  // About, Terms and Contact pages
+  // Information and legal pages
   if (activePage) {
     return (
       <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
-        <header className="site-header">
-          <div className="header-content">
-            <a href="/" className="brand">
-              <img
-                src={lionLogo}
-                alt="LIONRAMP Logo"
-                className="brand-logo"
-              />
-              <span>LIONRAMP</span>
-            </a>
-
-            <div className="header-actions">
-              <button
-                className="theme-toggle"
-                onClick={() => setDarkMode(!darkMode)}
-              >
-                {darkMode ? '☀️ Light' : '🌙 Dark'}
-              </button>
-            </div>
-          </div>
-        </header>
+        {header}
 
         <main>
           <div className="info-back-wrap">
@@ -432,27 +266,7 @@ function App() {
           {renderActivePage()}
         </main>
 
-        <footer className="site-footer">
-          <div className="footer-content">
-            <div className="footer-brand">
-              <img src={lionLogo} alt="LIONRAMP Logo" />
-
-              <div>
-                <h3>LIONRAMP</h3>
-                <p>Powerful Tools. Simple Solutions.</p>
-              </div>
-            </div>
-
-            <div className="footer-bottom">
-              <p>
-                © {new Date().getFullYear()} LIONRAMP. All rights reserved.
-              </p>
-              {footerLinks}
-            </div>
-          </div>
-        </footer>
-
-        {privacyModal}
+        {footer}
       </div>
     )
   }
@@ -463,11 +277,7 @@ function App() {
       <header className="site-header">
         <div className="header-content">
           <a href="/" className="brand">
-            <img
-              src={lionLogo}
-              alt="LIONRAMP Logo"
-              className="brand-logo"
-            />
+            <img src={lionLogo} alt="LIONRAMP Logo" className="brand-logo" />
             <span>LIONRAMP</span>
           </a>
 
@@ -475,6 +285,7 @@ function App() {
             <a href="#home">Home</a>
             <a href="#tools">Tools</a>
             <a href="#about">About</a>
+            <a href="/?page=faq">FAQ</a>
           </nav>
 
           <div className="header-actions">
@@ -492,18 +303,15 @@ function App() {
         <section className="hero-section" id="home">
           <div className="hero-content">
             <span className="hero-badge">FREE ONLINE TOOLS</span>
-
             <h1>
               Powerful Tools.
               <br />
               <span>Simple Solutions.</span>
             </h1>
-
             <p>
               Everything you need to convert, compress and manage your files.
               Fast, simple and completely free.
             </p>
-
             <a href="#tools" className="hero-button">
               Explore All Tools <span>→</span>
             </a>
@@ -514,14 +322,11 @@ function App() {
           <div className="section-heading">
             <span className="section-label">OUR TOOLS</span>
             <h2>Explore Our Free Tools</h2>
-            <p>
-              Choose a tool and get your work done quickly and easily.
-            </p>
+            <p>Choose a tool and get your work done quickly and easily.</p>
           </div>
 
           <div className="search-container">
             <span className="search-icon">🔍</span>
-
             <input
               type="search"
               placeholder="Search for a tool..."
@@ -550,13 +355,11 @@ function App() {
             {filteredTools.map((tool) => (
               <article className="tool-card" key={tool.name}>
                 <div className="tool-icon">{tool.icon}</div>
-
                 <div className="tool-card-content">
                   <span className="tool-category">{tool.category}</span>
                   <h3>{tool.name}</h3>
                   <p>{tool.description}</p>
                 </div>
-
                 <button
                   className="open-tool-button"
                   onClick={() => openTool(tool.name)}
@@ -580,7 +383,6 @@ function App() {
           <div className="about-content">
             <span className="section-label">ABOUT LIONRAMP</span>
             <h2>One Place. Many Powerful Tools.</h2>
-
             <p>
               LIONRAMP provides simple and useful online tools to help you
               complete everyday digital tasks. Our goal is to make file
@@ -593,13 +395,11 @@ function App() {
                 <h3>Completely Free</h3>
                 <p>Use our tools without subscriptions or payments.</p>
               </div>
-
               <div className="about-feature">
                 <span>⚡</span>
                 <h3>Simple to Use</h3>
                 <p>Easy interfaces designed for everyone.</p>
               </div>
-
               <div className="about-feature">
                 <span>🔒</span>
                 <h3>Privacy Focused</h3>
@@ -614,28 +414,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <img src={lionLogo} alt="LIONRAMP Logo" />
-
-            <div>
-              <h3>LIONRAMP</h3>
-              <p>Powerful Tools. Simple Solutions.</p>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p>
-              © {new Date().getFullYear()} LIONRAMP. All rights reserved.
-            </p>
-
-            {footerLinks}
-          </div>
-        </div>
-      </footer>
-
-      {privacyModal}
+      {footer}
     </div>
   )
 }

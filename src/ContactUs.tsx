@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 const ContactUs: React.FC = () => {
@@ -27,9 +28,11 @@ const ContactUs: React.FC = () => {
           </p>
           <a
             className="info-action-link"
-            href="https://lionramp.iceiy.com"
+            href="https://lionramp.pages.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            https://lionramp.iceiy.com
+            https://lionramp.pages.dev/
           </a>
         </section>
 
@@ -52,7 +55,7 @@ const ContactUs: React.FC = () => {
           </p>
         </section>
 
-        <p className="info-updated">Last updated: November 11, 2026</p>
+        <p className="info-updated">Last updated: November 12, 2026</p>
       </div>
     </main>
   )

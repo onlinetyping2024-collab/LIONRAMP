@@ -10,7 +10,6 @@ import ImageConverter from './tools/ImageConverter'
 import ImageCompressor from './tools/ImageCompressor'
 import ImageResizer from './tools/ImageResizer'
 import TextToPdf from './tools/TextToPdf'
-
 import PdfToWord from './tools/PdfToWord'
 import WordToPdf from './tools/WordToPdf'
 import MergePdf from './tools/MergePdf'
@@ -34,20 +33,396 @@ type Tool = {
   description: string
 }
 
+type ToolInformation = {
+  overview: string
+  features: string[]
+  steps: string[]
+  formats: string
+  limitations: string[]
+  keywords: string
+}
+
 const tools: Tool[] = [
   { name: 'PDF to Word', category: 'PDF', icon: '📄', description: 'Convert PDF files into editable Word documents.' },
   { name: 'Word to PDF', category: 'PDF', icon: '📝', description: 'Turn Word documents into PDF files.' },
   { name: 'Merge PDF', category: 'PDF', icon: '📚', description: 'Combine multiple PDF files into one document.' },
-  { name: 'Split PDF', category: 'PDF', icon: '✂️', description: 'Separate pages from a PDF document.' },
+  { name: 'Split PDF', category: 'PDF', icon: '✂️', description: 'Extract selected pages from a PDF document.' },
   { name: 'Text to PDF', category: 'PDF', icon: '📰', description: 'Turn your written text into a downloadable PDF.' },
   { name: 'Image Converter', category: 'Image', icon: '🖼️', description: 'Convert images between PNG, JPG and WEBP formats.' },
   { name: 'Image Compressor', category: 'Image', icon: '🗜️', description: 'Reduce image file size while maintaining quality.' },
   { name: 'Image Resizer', category: 'Image', icon: '📐', description: 'Resize images to your preferred dimensions.' },
   { name: 'Video Converter', category: 'Video', icon: '🎬', description: 'Convert video files between supported formats.' },
   { name: 'Audio Converter', category: 'Audio', icon: '🎵', description: 'Convert audio files into different formats.' },
-  { name: 'ZIP Extractor', category: 'Utility', icon: '📦', description: 'Extract files from ZIP archives.' },
+  { name: 'ZIP Extractor', category: 'Utility', icon: '📦', description: 'Open ZIP archives and extract their contents.' },
   { name: 'Unit Converter', category: 'Utility', icon: '🔄', description: 'Convert common measurements and units.' },
 ]
+
+const toolInformation: Record<string, ToolInformation> = {
+  'PDF to Word': {
+    overview:
+      'Convert PDF documents into editable Microsoft Word DOCX files using LIONRAMP PDF to Word Converter. The tool extracts selectable text from PDF pages and places it into a new Word document, making it easier to reuse or edit written content.',
+    features: [
+      'Extract selectable text from PDF documents.',
+      'Create a downloadable DOCX Word document.',
+      'Process PDF pages and display conversion progress.',
+      'Add page headings to help identify the original PDF pages.',
+      'Process documents directly in your browser.',
+    ],
+    steps: [
+      'Select a PDF document from your device.',
+      'Start the PDF to Word conversion.',
+      'Wait while the tool extracts text from the document pages.',
+      'Download the generated Word DOCX file.',
+    ],
+    formats: 'Input: PDF. Output: DOCX (Microsoft Word).',
+    limitations: [
+      'Only selectable text can be extracted. Scanned or image-only PDFs are not supported because OCR is not included.',
+      'Original formatting, images, tables, columns and complex layouts are not preserved.',
+      'Text positioning and spacing may differ from the original PDF.',
+      'Password-protected, damaged or unsupported PDF files may fail to convert.',
+    ],
+    keywords:
+      'PDF to Word, PDF to DOCX, convert PDF online, PDF text extraction, free PDF converter',
+  },
+
+  'Word to PDF': {
+    overview:
+      'Convert Microsoft Word DOCX documents into downloadable PDF files with LIONRAMP Word to PDF Converter. The tool extracts readable text from a DOCX document and creates a clean A4 PDF document.',
+    features: [
+      'Upload a DOCX Word document.',
+      'Extract readable text from the document.',
+      'Generate an A4 PDF document.',
+      'Automatically create additional pages when required.',
+      'Download the converted PDF file.',
+      'Process documents directly in your browser.',
+    ],
+    steps: [
+      'Choose a DOCX Word document from your device.',
+      'Check that the selected file is correct.',
+      'Click the Convert to PDF button.',
+      'Wait for the conversion to finish.',
+      'Download your generated PDF document.',
+    ],
+    formats: 'Input: DOCX. Output: PDF (A4). Older DOC files are not supported.',
+    limitations: [
+      'Only DOCX files are accepted.',
+      'Original Word formatting, images, tables and advanced layouts are not preserved.',
+      'The converter extracts raw text and creates a basic text-based PDF.',
+      'The generated PDF uses the standard Helvetica font.',
+      'Sinhala and other Unicode scripts may not display correctly because a Unicode font is not embedded.',
+    ],
+    keywords:
+      'Word to PDF, DOCX to PDF, convert Word document online, free Word PDF converter',
+  },
+
+  'Merge PDF': {
+    overview:
+      'Combine multiple PDF documents into one convenient PDF file using LIONRAMP Merge PDF. Select multiple PDF files, arrange them in your preferred order and create a single combined document.',
+    features: [
+      'Select two or more PDF documents.',
+      'Combine pages from multiple PDF files.',
+      'Change the order of documents before merging.',
+      'Remove unwanted files from the selection.',
+      'Clear the file list and start again.',
+      'Download the merged PDF document.',
+    ],
+    steps: [
+      'Select at least two PDF files from your device.',
+      'Arrange the files in the order you want them to appear.',
+      'Remove any unwanted documents if necessary.',
+      'Click the merge button.',
+      'Download the combined PDF file.',
+    ],
+    formats: 'Input: Multiple PDF files. Output: One combined PDF file.',
+    limitations: [
+      'At least two PDF files are required.',
+      'The order of documents determines the order of pages in the merged PDF.',
+      'Password-protected, damaged or invalid PDF documents may not merge successfully.',
+      'Large PDF files may require additional browser memory and processing time.',
+    ],
+    keywords:
+      'Merge PDF, combine PDF files, join PDF documents, merge PDF online, free PDF merger',
+  },
+
+  'Split PDF': {
+    overview:
+      'Extract specific pages from a PDF document using LIONRAMP Split PDF. Enter individual page numbers or page ranges to create a new PDF containing only the pages you need.',
+    features: [
+      'Upload a PDF document.',
+      'View the total number of pages.',
+      'Select individual pages.',
+      'Select page ranges such as 1-5 or 3-8.',
+      'Combine selected pages into one new PDF.',
+      'Download the extracted PDF document.',
+    ],
+    steps: [
+      'Upload a PDF document.',
+      'Enter the page numbers or ranges you want to extract.',
+      'Use commas to separate selections, for example: 1, 3, 5-8.',
+      'Start the extraction process.',
+      'Download the new PDF containing your selected pages.',
+    ],
+    formats: 'Input: PDF. Output: One PDF containing the selected pages.',
+    limitations: [
+      'The tool creates one new PDF containing all selected pages; it does not create a separate PDF for every page.',
+      'Page numbers must be within the original document page range.',
+      'Selected pages are arranged in their original document order.',
+      'Password-protected, damaged or invalid PDF documents may fail.',
+      'Large PDF files may require additional browser memory.',
+    ],
+    keywords:
+      'Split PDF, extract PDF pages, select PDF pages, PDF page extractor, free PDF splitter',
+  },
+
+  'Text to PDF': {
+    overview:
+      'Create a downloadable PDF document from your own written text with LIONRAMP Text to PDF Converter. Add a document title, type or paste your content, and generate a clean A4 PDF file.',
+    features: [
+      'Enter a custom document title.',
+      'Type or paste text into the editor.',
+      'Automatically count words and characters.',
+      'Generate A4 PDF documents.',
+      'Automatically add new pages when the content exceeds the page limit.',
+      'Download the generated PDF using a filename based on the document title.',
+      'Clear the editor to create another document.',
+    ],
+    steps: [
+      'Enter your preferred document title.',
+      'Type or paste your text into the content area.',
+      'Review the word and character counts.',
+      'Click Create & Download PDF.',
+      'Your generated PDF will be downloaded automatically.',
+    ],
+    formats: 'Input: Text entered in the editor. Output: A4 PDF.',
+    limitations: [
+      'The current version supports basic Latin text.',
+      'Sinhala and other Unicode scripts require an embedded Unicode font for correct PDF display.',
+      'The document uses standard Helvetica typography.',
+      'Advanced formatting, images and tables are not supported in this basic text editor.',
+    ],
+    keywords:
+      'Text to PDF, create PDF from text, online PDF creator, text document to PDF, free PDF generator',
+  },
+
+  'Image Converter': {
+    overview:
+      'Convert images between popular image formats using LIONRAMP Image Converter. Choose an image, select your preferred output format and download the converted file without using a separate desktop application.',
+    features: [
+      'Convert images to PNG format.',
+      'Convert images to JPEG format.',
+      'Convert images to WebP format.',
+      'Preview the selected image.',
+      'Adjust output quality for JPEG and WebP.',
+      'Download the converted image.',
+      'Maintain the original image dimensions.',
+    ],
+    steps: [
+      'Select or upload an image from your device.',
+      'Choose PNG, JPEG or WebP as the output format.',
+      'Adjust the quality setting when available.',
+      'Start the conversion.',
+      'Download your converted image.',
+    ],
+    formats: 'Input: Browser-supported image formats. Output: PNG, JPEG and WebP.',
+    limitations: [
+      'Image conversion depends on the image formats supported by your browser.',
+      'The output keeps the original image dimensions; this tool does not resize images.',
+      'The quality setting is available for JPEG and WebP, not PNG.',
+      'Transparency may not be retained when converting an image to JPEG.',
+      'Very large images may require additional browser memory.',
+    ],
+    keywords:
+      'Image Converter, PNG to JPG, JPG to PNG, WebP converter, convert images online, free image converter',
+  },
+
+  'Image Compressor': {
+    overview:
+      'Reduce the file size of images with LIONRAMP Image Compressor. Adjust the compression quality and export images in JPEG, PNG or WebP formats to help manage image file sizes.',
+    features: [
+      'Compress supported image files in your browser.',
+      'Choose JPEG, PNG or WebP as the output format.',
+      'Adjust image quality from 10% to 100%.',
+      'View original and compressed file sizes.',
+      'See the estimated file size reduction.',
+      'Maintain the original image dimensions.',
+      'Download the compressed image.',
+    ],
+    steps: [
+      'Select an image from your device.',
+      'Choose the desired output format.',
+      'Adjust the compression quality.',
+      'Review the original and compressed file sizes.',
+      'Download your compressed image.',
+    ],
+    formats: 'Input: Supported raster image files. SVG is not supported. Output: JPEG, PNG and WebP.',
+    limitations: [
+      'SVG files are not supported.',
+      'The tool preserves the original image dimensions and does not resize images.',
+      'PNG compression may not significantly reduce file size because PNG is a lossless format.',
+      'Compression results depend on the image content, output format and selected quality.',
+      'Very large images may require additional browser memory.',
+    ],
+    keywords:
+      'Image Compressor, compress images online, reduce image size, JPG compressor, PNG compressor, WebP compressor',
+  },
+
+  'Image Resizer': {
+    overview:
+      'Change image dimensions with LIONRAMP Image Resizer. Enter your preferred width and height, keep the original aspect ratio when needed, and export the resized image in a popular image format.',
+    features: [
+      'Upload an image and view its original dimensions.',
+      'Set custom output width and height.',
+      'Lock the aspect ratio to maintain image proportions.',
+      'Choose PNG, JPEG or WebP output.',
+      'Preview the selected image.',
+      'Download the resized image.',
+      'Support for dimensions up to 12000 × 12000 pixels.',
+    ],
+    steps: [
+      'Select an image from your device.',
+      'Enter your preferred width and height.',
+      'Keep the aspect ratio locked or unlock it for custom proportions.',
+      'Choose PNG, JPEG or WebP.',
+      'Create and download the resized image.',
+    ],
+    formats: 'Input: Supported raster image formats. SVG is not supported. Output: PNG, JPEG and WebP.',
+    limitations: [
+      'SVG and non-image files are not supported.',
+      'The maximum permitted width and height are 12000 pixels each.',
+      'JPEG output uses a white background and does not preserve transparency.',
+      'Output image quality uses a fixed browser Canvas setting.',
+      'Very large dimensions may require significant browser memory.',
+    ],
+    keywords:
+      'Image Resizer, resize image online, change image dimensions, photo resizer, PNG resizer, JPG resizer',
+  },
+
+  'Video Converter': {
+    overview:
+      'Convert video files into different formats using LIONRAMP Video Converter. The tool uses FFmpeg technology in your browser to process video files and create downloadable output files.',
+    features: [
+      'Convert videos to MP4 format.',
+      'Convert videos to WebM format.',
+      'Convert videos to AVI format.',
+      'Convert videos to MOV format.',
+      'Extract audio from video and save it as MP3.',
+      'View conversion progress.',
+      'Automatically download the converted file.',
+    ],
+    steps: [
+      'Select a video file from your device.',
+      'Choose your preferred output format.',
+      'Click Convert Video.',
+      'Wait while FFmpeg processes your file.',
+      'Download the converted video or extracted MP3 audio.',
+    ],
+    formats: 'Input: Browser-selected video files. Output: MP4, WebM, AVI, MOV and MP3 audio.',
+    limitations: [
+      'Conversion depends on the available FFmpeg codecs and supported input formats.',
+      'Some video or audio codecs may not be supported.',
+      'Large video files can consume significant browser memory and processing power.',
+      'Conversion time depends on the video size, codec and device performance.',
+      'MP3 output extracts audio only; it does not include video.',
+    ],
+    keywords:
+      'Video Converter, convert video online, MP4 converter, WebM converter, AVI converter, MOV converter, video to MP3',
+  },
+
+  'Audio Converter': {
+    overview:
+      'Convert audio files into popular audio formats using LIONRAMP Audio Converter. Select an audio file, choose an output format and create a downloadable converted audio file directly in your browser.',
+    features: [
+      'Convert audio to MP3.',
+      'Convert audio to WAV.',
+      'Convert audio to OGG.',
+      'Convert audio to FLAC.',
+      'Convert audio to AAC.',
+      'View conversion progress.',
+      'Download the converted audio file.',
+    ],
+    steps: [
+      'Select an audio file from your device.',
+      'Choose MP3, WAV, OGG, FLAC or AAC.',
+      'Start the conversion.',
+      'Wait for the browser-based FFmpeg process to finish.',
+      'Download your converted audio file.',
+    ],
+    formats: 'Input: Browser-selected audio files. Output: MP3, WAV, OGG, FLAC and AAC.',
+    limitations: [
+      'Conversion depends on the available FFmpeg codecs.',
+      'Some input audio formats or codecs may not be supported.',
+      'Large audio files may take longer to process and require more browser memory.',
+      'Output quality and file size depend on the selected format and encoding settings.',
+      'Conversion errors may occur if the input file is damaged or unsupported.',
+    ],
+    keywords:
+      'Audio Converter, convert audio online, MP3 converter, WAV converter, OGG converter, FLAC converter, AAC converter',
+  },
+
+  'ZIP Extractor': {
+    overview:
+      'Open ZIP archives and access their contents with LIONRAMP ZIP Extractor. View the files and folders inside an archive, download individual files or create a new ZIP containing all extracted files.',
+    features: [
+      'Open ZIP archive files.',
+      'Display files and folders inside the archive.',
+      'View file paths and archive contents.',
+      'Download individual files.',
+      'Extract all files into a new ZIP archive.',
+      'Preserve the folder structure when creating the extracted ZIP.',
+      'Display the number of items found.',
+    ],
+    steps: [
+      'Select a ZIP archive from your device.',
+      'Wait while the archive contents are loaded.',
+      'Review the files and folders displayed.',
+      'Download an individual file or select Extract All Files.',
+      'If you select Extract All, download the new ZIP archive and open it using your device archive manager.',
+    ],
+    formats: 'Input: ZIP archives. Output: Individual extracted files or a new ZIP archive.',
+    limitations: [
+      'Password-protected and some advanced archive formats are not supported.',
+      'Extract All creates a new ZIP archive rather than directly saving every file into a device folder.',
+      'Large archives may require significant browser memory.',
+      'Damaged or invalid ZIP files may fail to open or extract.',
+    ],
+    keywords:
+      'ZIP Extractor, extract ZIP online, open ZIP files, unzip files, ZIP archive extractor, download ZIP contents',
+  },
+
+  'Unit Converter': {
+    overview:
+      'Convert everyday measurements quickly using LIONRAMP Unit Converter. Select a measurement category, enter a value and choose the units you want to convert between. The result is calculated automatically.',
+    features: [
+      'Convert length measurements.',
+      'Convert weight and mass measurements.',
+      'Convert temperature between Celsius, Fahrenheit and Kelvin.',
+      'Convert area measurements.',
+      'Convert volume measurements.',
+      'Convert speed measurements.',
+      'Convert time units.',
+      'Convert digital storage units.',
+      'Swap the selected units.',
+      'Copy the conversion result.',
+    ],
+    steps: [
+      'Choose a measurement category.',
+      'Enter the value you want to convert.',
+      'Select the original unit.',
+      'Select the target unit.',
+      'View the automatically calculated result.',
+      'Use the swap or copy options when needed.',
+    ],
+    formats: 'Categories: Length, Weight, Temperature, Area, Volume, Speed, Time and Data Storage.',
+    limitations: [
+      'The converter supports predefined units within its available categories.',
+      'Data storage conversions use a 1024-based calculation system.',
+      'Results are based on fixed conversion factors.',
+      'This tool does not provide live currency or exchange-rate conversion.',
+    ],
+    keywords:
+      'Unit Converter, online measurement converter, length converter, weight converter, temperature converter, area converter, volume converter, speed converter, data storage converter',
+  },
+}
 
 const categories = ['All Tools', 'PDF', 'Image', 'Video', 'Audio', 'Utility']
 
@@ -77,6 +452,78 @@ const pageTitles: Record<string, string> = {
   faq: 'Frequently Asked Questions',
   disclaimer: 'Disclaimer',
   'privacy-policy': 'Privacy Policy',
+}
+
+const pageDescriptions: Record<string, string> = {
+  about: 'Learn more about LIONRAMP, our free online tools and our goal of making everyday digital tasks easier.',
+  terms: 'Read the terms and conditions for using LIONRAMP online tools and services.',
+  contact: 'Contact LIONRAMP for questions, feedback, suggestions or support.',
+  faq: 'Find answers to frequently asked questions about LIONRAMP tools and services.',
+  disclaimer: 'Read the LIONRAMP disclaimer and important information about using our online tools.',
+  'privacy-policy': 'Learn how LIONRAMP handles privacy, browser-based processing and website information.',
+}
+
+function ToolDetails({ toolName }: { toolName: string }) {
+  const info = toolInformation[toolName]
+
+  if (!info) return null
+
+  return (
+    <section className="tool-details">
+      <div className="tool-details-header">
+        <span className="section-label">LIONRAMP TOOL GUIDE</span>
+        <h2>About {toolName}</h2>
+        <p>{info.overview}</p>
+      </div>
+
+      <div className="tool-details-section">
+        <h3>Key Features</h3>
+        <ul>
+          {info.features.map((feature, index) => (
+            <li key={index}>{feature}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="tool-details-section">
+        <h3>How to Use {toolName}</h3>
+        <ol>
+          {info.steps.map((step, index) => (
+            <li key={index}>{step}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="tool-details-section">
+        <h3>Supported Formats and Options</h3>
+        <p>{info.formats}</p>
+      </div>
+
+      <div className="tool-details-section tool-details-limitations">
+        <h3>Important Limitations</h3>
+        <ul>
+          {info.limitations.map((limitation, index) => (
+            <li key={index}>{limitation}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="tool-details-section">
+        <h3>Privacy and Processing</h3>
+        <p>
+          This tool processes files in your browser using its implemented
+          browser-based libraries and technologies. Processing may use your
+          device memory and processing power. Your browser and device
+          capabilities may affect performance and supported file types.
+        </p>
+      </div>
+
+      <div className="tool-details-keywords">
+        <strong>Related topics:</strong>
+        <p>{info.keywords}</p>
+      </div>
+    </section>
+  )
 }
 
 function App() {
@@ -109,13 +556,35 @@ function App() {
   }, [darkMode])
 
   useEffect(() => {
+    let title = 'LIONRAMP | Powerful Tools. Simple Solutions.'
+    let description =
+      'Explore free online tools from LIONRAMP. Convert, compress and manage PDF, image, video, audio and other files easily.'
+
     if (activePage) {
-      document.title = `${pageTitles[activePage]} | LIONRAMP`
+      title = `${pageTitles[activePage]} | LIONRAMP`
+      description = pageDescriptions[activePage] || description
     } else if (activeTool) {
-      document.title = `${activeTool} | LIONRAMP`
-    } else {
-      document.title = 'LIONRAMP | Powerful Tools. Simple Solutions.'
+      title = `${activeTool} | LIONRAMP`
+
+      const info = toolInformation[activeTool]
+      if (info) {
+        description = info.overview
+      }
     }
+
+    document.title = title
+
+    let metaDescription = document.querySelector(
+      'meta[name="description"]'
+    ) as HTMLMetaElement | null
+
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta')
+      metaDescription.name = 'description'
+      document.head.appendChild(metaDescription)
+    }
+
+    metaDescription.content = description
   }, [activePage, activeTool])
 
   const filteredTools = useMemo(() => {
@@ -244,6 +713,8 @@ function App() {
           <div className="active-tool-container">
             {renderActiveTool()}
           </div>
+
+          <ToolDetails toolName={activeTool} />
         </main>
 
         {footer}

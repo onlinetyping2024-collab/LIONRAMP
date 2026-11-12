@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useState } from 'react'
 import type { ChangeEvent } from 'react'
 
@@ -20,6 +19,9 @@ import ZipExtractor from './tools/ZipExtractor'
 import UnitConverter from './tools/UnitConverter'
 
 import PrivacyPolicy from './PrivacyPolicy'
+import AboutUs from './AboutUs'
+import TermsAndConditions from './TermsAndConditions'
+import ContactUs from './ContactUs'
 
 type Tool = {
   name: string
@@ -29,21 +31,88 @@ type Tool = {
 }
 
 const tools: Tool[] = [
-  { name: 'PDF to Word', category: 'PDF', icon: '📄', description: 'Convert PDF files into editable Word documents.' },
-  { name: 'Word to PDF', category: 'PDF', icon: '📝', description: 'Turn Word documents into PDF files.' },
-  { name: 'Merge PDF', category: 'PDF', icon: '📚', description: 'Combine multiple PDF files into one document.' },
-  { name: 'Split PDF', category: 'PDF', icon: '✂️', description: 'Separate pages from a PDF document.' },
-  { name: 'Text to PDF', category: 'PDF', icon: '📰', description: 'Turn your written text into a downloadable PDF.' },
-  { name: 'Image Converter', category: 'Image', icon: '🖼️', description: 'Convert images between PNG, JPG and WEBP formats.' },
-  { name: 'Image Compressor', category: 'Image', icon: '🗜️', description: 'Reduce image file size while maintaining quality.' },
-  { name: 'Image Resizer', category: 'Image', icon: '📐', description: 'Resize images to your preferred dimensions.' },
-  { name: 'Video Converter', category: 'Video', icon: '🎬', description: 'Convert video files between supported formats.' },
-  { name: 'Audio Converter', category: 'Audio', icon: '🎵', description: 'Convert audio files into different formats.' },
-  { name: 'ZIP Extractor', category: 'Utility', icon: '📦', description: 'Extract files from ZIP archives.' },
-  { name: 'Unit Converter', category: 'Utility', icon: '🔄', description: 'Convert common measurements and units.' },
+  {
+    name: 'PDF to Word',
+    category: 'PDF',
+    icon: '📄',
+    description: 'Convert PDF files into editable Word documents.',
+  },
+  {
+    name: 'Word to PDF',
+    category: 'PDF',
+    icon: '📝',
+    description: 'Turn Word documents into PDF files.',
+  },
+  {
+    name: 'Merge PDF',
+    category: 'PDF',
+    icon: '📚',
+    description: 'Combine multiple PDF files into one document.',
+  },
+  {
+    name: 'Split PDF',
+    category: 'PDF',
+    icon: '✂️',
+    description: 'Separate pages from a PDF document.',
+  },
+  {
+    name: 'Text to PDF',
+    category: 'PDF',
+    icon: '📰',
+    description: 'Turn your written text into a downloadable PDF.',
+  },
+  {
+    name: 'Image Converter',
+    category: 'Image',
+    icon: '🖼️',
+    description: 'Convert images between PNG, JPG and WEBP formats.',
+  },
+  {
+    name: 'Image Compressor',
+    category: 'Image',
+    icon: '🗜️',
+    description: 'Reduce image file size while maintaining quality.',
+  },
+  {
+    name: 'Image Resizer',
+    category: 'Image',
+    icon: '📐',
+    description: 'Resize images to your preferred dimensions.',
+  },
+  {
+    name: 'Video Converter',
+    category: 'Video',
+    icon: '🎬',
+    description: 'Convert video files between supported formats.',
+  },
+  {
+    name: 'Audio Converter',
+    category: 'Audio',
+    icon: '🎵',
+    description: 'Convert audio files into different formats.',
+  },
+  {
+    name: 'ZIP Extractor',
+    category: 'Utility',
+    icon: '📦',
+    description: 'Extract files from ZIP archives.',
+  },
+  {
+    name: 'Unit Converter',
+    category: 'Utility',
+    icon: '🔄',
+    description: 'Convert common measurements and units.',
+  },
 ]
 
-const categories = ['All Tools', 'PDF', 'Image', 'Video', 'Audio', 'Utility']
+const categories = [
+  'All Tools',
+  'PDF',
+  'Image',
+  'Video',
+  'Audio',
+  'Utility',
+]
 
 const toolRoutes: Record<string, string> = {
   'PDF to Word': 'pdf-to-word',
@@ -75,6 +144,12 @@ const routeTools: Record<string, string> = {
   'unit-converter': 'Unit Converter',
 }
 
+const pageTitles: Record<string, string> = {
+  about: 'About LIONRAMP',
+  terms: 'Terms & Conditions',
+  contact: 'Contact LIONRAMP',
+}
+
 function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All Tools')
@@ -90,8 +165,17 @@ function App() {
     return slug ? routeTools[slug] || '' : ''
   })
 
+  const [activePage] = useState(() => {
+    const params = new URLSearchParams(window.location.search)
+    const page = params.get('page')
+    return page && pageTitles[page] ? page : ''
+  })
+
   useEffect(() => {
-    localStorage.setItem('lionramp-theme', darkMode ? 'dark' : 'light')
+    localStorage.setItem(
+      'lionramp-theme',
+      darkMode ? 'dark' : 'light'
+    )
 
     document.documentElement.setAttribute(
       'data-theme',
@@ -121,6 +205,16 @@ function App() {
     }
   }, [showPrivacyPolicy])
 
+  useEffect(() => {
+    if (activePage) {
+      document.title = `${pageTitles[activePage]} | LIONRAMP`
+    } else if (activeTool) {
+      document.title = `${activeTool} | LIONRAMP`
+    } else {
+      document.title = 'LIONRAMP | Powerful Tools. Simple Solutions.'
+    }
+  }, [activePage, activeTool])
+
   const filteredTools = useMemo(() => {
     return tools.filter((tool) => {
       const matchesSearch =
@@ -128,7 +222,8 @@ function App() {
         tool.description.toLowerCase().includes(search.toLowerCase())
 
       const matchesCategory =
-        activeCategory === 'All Tools' || tool.category === activeCategory
+        activeCategory === 'All Tools' ||
+        tool.category === activeCategory
 
       return matchesSearch && matchesCategory
     })
@@ -142,7 +237,8 @@ function App() {
       return
     }
 
-    const url = `${window.location.origin}${window.location.pathname}?tool=${route}`
+    const url =
+      `${window.location.origin}${window.location.pathname}?tool=${route}`
 
     window.open(url, '_blank', 'noopener,noreferrer')
   }
@@ -151,30 +247,58 @@ function App() {
     switch (activeTool) {
       case 'PDF to Word':
         return <PdfToWord />
+
       case 'Word to PDF':
         return <WordToPdf />
+
       case 'Merge PDF':
         return <MergePdf />
+
       case 'Split PDF':
         return <SplitPdf />
+
       case 'Text to PDF':
         return <TextToPdf />
+
       case 'Image Converter':
         return <ImageConverter />
+
       case 'Image Compressor':
         return <ImageCompressor />
+
       case 'Image Resizer':
         return <ImageResizer />
+
       case 'Video Converter':
         return <VideoConverter />
+
       case 'Audio Converter':
         return <AudioConverter />
+
       case 'ZIP Extractor':
         return <ZipExtractor />
+
       case 'Unit Converter':
         return <UnitConverter />
+
       default:
         return <p>Tool not found. Please return to the homepage.</p>
+    }
+  }
+
+  const renderActivePage = () => {
+    switch (activePage) {
+      case 'about':
+        return <AboutUs />
+
+      case 'terms':
+        return <TermsAndConditions />
+
+      case 'contact':
+        return <ContactUs />
+
+      default:
+        return null
     }
   }
 
@@ -203,6 +327,22 @@ function App() {
     </div>
   ) : null
 
+  const footerLinks = (
+    <div className="footer-page-links">
+      <a href="/">Home</a>
+      <a href="/?page=about">About Us</a>
+      <a href="/?page=terms">Terms & Conditions</a>
+      <a href="/?page=contact">Contact Us</a>
+      <button
+        className="privacy-footer-link"
+        onClick={() => setShowPrivacyPolicy(true)}
+      >
+        Privacy Policy
+      </button>
+    </div>
+  )
+
+  // Individual tool page
   if (activeTool) {
     return (
       <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -244,15 +384,11 @@ function App() {
         </main>
 
         <footer className="site-footer">
-          <p>© {new Date().getFullYear()} LIONRAMP. All rights reserved.</p>
-          <p>Powerful Tools. Simple Solutions.</p>
-
-          <button
-            className="privacy-footer-link"
-            onClick={() => setShowPrivacyPolicy(true)}
-          >
-            Privacy Policy
-          </button>
+          <div className="footer-content">
+            <p>© {new Date().getFullYear()} LIONRAMP. All rights reserved.</p>
+            <p>Powerful Tools. Simple Solutions.</p>
+            {footerLinks}
+          </div>
         </footer>
 
         {privacyModal}
@@ -260,6 +396,68 @@ function App() {
     )
   }
 
+  // About, Terms and Contact pages
+  if (activePage) {
+    return (
+      <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
+        <header className="site-header">
+          <div className="header-content">
+            <a href="/" className="brand">
+              <img
+                src={lionLogo}
+                alt="LIONRAMP Logo"
+                className="brand-logo"
+              />
+              <span>LIONRAMP</span>
+            </a>
+
+            <div className="header-actions">
+              <button
+                className="theme-toggle"
+                onClick={() => setDarkMode(!darkMode)}
+              >
+                {darkMode ? '☀️ Light' : '🌙 Dark'}
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <div className="info-back-wrap">
+            <a href="/" className="back-button info-back-button">
+              ← Back to Home
+            </a>
+          </div>
+
+          {renderActivePage()}
+        </main>
+
+        <footer className="site-footer">
+          <div className="footer-content">
+            <div className="footer-brand">
+              <img src={lionLogo} alt="LIONRAMP Logo" />
+
+              <div>
+                <h3>LIONRAMP</h3>
+                <p>Powerful Tools. Simple Solutions.</p>
+              </div>
+            </div>
+
+            <div className="footer-bottom">
+              <p>
+                © {new Date().getFullYear()} LIONRAMP. All rights reserved.
+              </p>
+              {footerLinks}
+            </div>
+          </div>
+        </footer>
+
+        {privacyModal}
+      </div>
+    )
+  }
+
+  // Homepage
   return (
     <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="site-header">
@@ -316,7 +514,9 @@ function App() {
           <div className="section-heading">
             <span className="section-label">OUR TOOLS</span>
             <h2>Explore Our Free Tools</h2>
-            <p>Choose a tool and get your work done quickly and easily.</p>
+            <p>
+              Choose a tool and get your work done quickly and easily.
+            </p>
           </div>
 
           <div className="search-container">
@@ -406,6 +606,10 @@ function App() {
                 <p>Browser-based processing where supported.</p>
               </div>
             </div>
+
+            <a href="/?page=about" className="info-action-link">
+              Learn More About Us →
+            </a>
           </div>
         </section>
       </main>
@@ -426,12 +630,7 @@ function App() {
               © {new Date().getFullYear()} LIONRAMP. All rights reserved.
             </p>
 
-            <button
-              className="privacy-footer-link"
-              onClick={() => setShowPrivacyPolicy(true)}
-            >
-              Privacy Policy
-            </button>
+            {footerLinks}
           </div>
         </div>
       </footer>

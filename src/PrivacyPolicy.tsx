@@ -2,7 +2,7 @@
 import React from "react";
 
 const PrivacyPolicy: React.FC = () => {
-  const lastUpdated = "November 11, 2026";
+  const lastUpdated = "November 12, 2026";
 
   const sections = [
     { id: "introduction", title: "1. Introduction" },
@@ -26,17 +26,26 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            Welcome to <strong>LIONRAMP</strong>. Your privacy is important to
-            us. This Privacy Policy explains how information may be collected,
-            used, stored, and protected when you visit and use our website.
+            Welcome to <strong>LIONRAMP</strong>. Your privacy is important
+            to us. This Privacy Policy explains how information may be
+            collected, used, processed, and protected when you visit and
+            use our website.
           </p>
           <p>
-            LIONRAMP provides online tools designed to help users work with
-            images, documents, PDFs, and other digital content.
+            LIONRAMP provides free online tools designed to help users
+            work with images, documents, PDF files, videos, audio files,
+            and other digital content.
           </p>
           <p>
-            By accessing or using our website, you acknowledge that you have
+            By accessing or using LIONRAMP, you acknowledge that you have
             read and understood this Privacy Policy.
+          </p>
+          <p>
+            This policy applies to our website:
+            <br />
+            <a href="https://lionramp.pages.dev">
+              https://lionramp.pages.dev
+            </a>
           </p>
         </>
       ),
@@ -47,27 +56,40 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            We aim to collect only the information reasonably necessary to
-            operate and improve our website.
+            We aim to collect only information reasonably necessary
+            to operate, maintain, and improve LIONRAMP.
           </p>
+          <p>Depending on how you use our website, information may include:</p>
           <ul>
             <li>
-              <strong>Usage information:</strong> Browser type, device
-              information, pages visited, and general website interaction data.
+              <strong>Technical information:</strong> IP address,
+              browser type, operating system, device information,
+              and technical settings.
             </li>
             <li>
-              <strong>Technical information:</strong> IP address, operating
-              system, browser settings, and diagnostic information that may be
-              provided through hosting or analytics services.
+              <strong>Usage information:</strong> Pages visited,
+              interactions with website features, approximate usage
+              patterns, and diagnostic information.
             </li>
             <li>
-              <strong>Voluntarily provided information:</strong> Information
-              you choose to submit through any available website feature.
+              <strong>Cookie information:</strong> Information collected
+              through cookies and similar technologies used by our
+              website or third-party services.
+            </li>
+            <li>
+              <strong>Voluntarily provided information:</strong> Any
+              information you choose to provide through available
+              website features.
             </li>
           </ul>
           <p>
-            We do not intentionally request sensitive personal information
-            through our online tools.
+            Some technical information may be collected automatically
+            by our hosting provider, advertising partners, or other
+            services that support the website.
+          </p>
+          <p>
+            We do not intentionally request sensitive personal
+            information through our online tools.
           </p>
         </>
       ),
@@ -78,29 +100,44 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            LIONRAMP offers tools for working with images, PDFs, documents,
-            and other files.
+            LIONRAMP provides online tools for working with images,
+            PDFs, documents, videos, audio, and other files.
           </p>
           <p>
-            Depending on the individual tool, file processing may take place
-            directly in your browser or through an external processing service.
-            Please check the behavior of the specific tool before uploading
-            confidential or sensitive files.
+            The way files are processed may differ between individual
+            tools. Depending on the functionality of a particular tool,
+            processing may take place within your browser or may involve
+            communication with an external server or third-party service.
+          </p>
+          <p>
+            We do not make a blanket guarantee that every uploaded file
+            is processed exclusively on your device or that every file
+            is automatically deleted immediately after processing.
           </p>
           <ul>
             <li>
-              Do not upload files containing confidential or highly sensitive
-              information unless you understand how that tool processes them.
+              Avoid uploading confidential, sensitive, financial,
+              medical, or personally identifiable documents unless you
+              understand how the particular tool handles your file.
             </li>
             <li>
-              We do not intend to use your personal files for advertising
-              purposes.
+              Do not upload files that you do not have permission
+              to process.
             </li>
             <li>
-              Any third-party processing service may handle information
-              according to its own privacy policy.
+              We do not intend to use the contents of your personal
+              files for advertising purposes.
+            </li>
+            <li>
+              If a tool uses an external processing provider, that
+              provider may process information according to its own
+              privacy policy and terms.
             </li>
           </ul>
+          <p>
+            We encourage users to review the behavior of each tool
+            before processing important or confidential files.
+          </p>
         </>
       ),
     },
@@ -110,19 +147,30 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            Our website and third-party services may use cookies or similar
-            technologies to support website functionality, understand visitor
-            activity, and improve user experience.
+            LIONRAMP and certain third-party services may use cookies,
+            web beacons, pixels, local storage, and similar technologies.
           </p>
-          <p>Cookies may be used for purposes such as:</p>
+          <p>These technologies may be used for purposes such as:</p>
           <ul>
-            <li>Remembering certain website preferences.</li>
+            <li>Supporting website functionality.</li>
+            <li>Remembering certain user preferences.</li>
             <li>Understanding website traffic and performance.</li>
-            <li>Supporting advertising and measurement services.</li>
+            <li>Measuring advertising performance.</li>
+            <li>Supporting personalized and non-personalized advertising.</li>
+            <li>Preventing fraudulent activity and improving security.</li>
           </ul>
           <p>
-            You can manage or disable cookies through your browser settings.
-            However, disabling cookies may affect certain website features.
+            Third-party providers may place or read cookies on your
+            browser when you visit pages that use their services.
+          </p>
+          <p>
+            You can manage or disable cookies through your browser
+            settings. However, disabling certain cookies may affect
+            website functionality or available features.
+          </p>
+          <p>
+            Please note that browser cookie controls may not disable
+            every type of tracking or local storage technology.
           </p>
         </>
       ),
@@ -133,55 +181,124 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            LIONRAMP may display advertisements provided by Google AdSense
-            and other advertising partners.
+            LIONRAMP may display advertisements provided by Google
+            AdSense and other third-party advertising partners.
           </p>
           <p>
-            Third-party advertising providers may use cookies, web beacons,
-            or similar technologies to show advertisements based on previous
-            visits to this or other websites.
+            Google and other third-party vendors may use cookies
+            to serve advertisements based on a user's previous visits
+            to this website or other websites on the internet.
           </p>
           <p>
-            Google and its advertising partners may process certain information
-            in accordance with their own privacy policies and applicable
-            advertising requirements.
+            Google's use of advertising cookies enables Google and
+            its partners to display advertisements to users based on
+            their visits to this website and/or other websites.
           </p>
           <p>
-            For more information about how Google handles data, visit:
+            Advertising providers may use cookies, web beacons,
+            IP addresses, device identifiers, or similar technologies
+            to collect information for advertising delivery,
+            measurement, frequency capping, and reporting.
           </p>
-          <a
-            href="https://policies.google.com/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google Privacy Policy
-          </a>
+          <p>
+            The information collected through these technologies may
+            be processed according to the privacy policies of the
+            relevant advertising providers.
+          </p>
+          <p>
+            Learn more about Google's privacy practices:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                How Google uses information from sites or apps that use
+                Google services
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://support.google.com/adsense/answer/7549925"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                How Google AdSense uses cookies
+              </a>
+            </li>
+          </ul>
+          <p>
+            We encourage visitors to review these resources to
+            understand how advertising technologies may operate.
+          </p>
         </>
       ),
     },
     {
       id: "preferences",
-      title: "Google Advertising Preferences",
+      title: "Advertising Preferences & Opt-Out",
       content: (
         <>
           <p>
-            Users may be able to manage their Google advertising
-            personalization preferences through Google's account settings.
+            Users may have options to manage personalized advertising
+            and control certain advertising-related settings.
           </p>
           <p>
-            You can learn more about advertising controls and personalization
-            at:
+            You can review or change Google's advertising
+            personalization settings using:
           </p>
-          <a
-            href="https://myadcenter.google.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google My Ad Center
-          </a>
+          <ul>
+            <li>
+              <a
+                href="https://adssettings.google.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Ads Settings
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://myadcenter.google.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google My Ad Center
+              </a>
+            </li>
+          </ul>
           <p>
-            You may also manage cookies through your browser settings and
-            available privacy controls.
+            You may also visit the following website to learn about
+            options for opting out of certain third-party vendors'
+            personalized advertising cookies:
+          </p>
+          <p>
+            <a
+              href="https://www.aboutads.info/choices/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AboutAds.info - Advertising Choices
+            </a>
+          </p>
+          <p>
+            These controls may affect personalized advertising.
+            They do not necessarily prevent all advertisements
+            from appearing.
+          </p>
+          <p>
+            You can also manage cookies through your browser settings.
           </p>
         </>
       ),
@@ -192,17 +309,52 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            LIONRAMP may use third-party services to support hosting,
-            advertising, analytics, security, and website functionality.
+            LIONRAMP may rely on third-party services to support
+            website hosting, security, advertising, analytics,
+            file processing, and other website functionality.
           </p>
           <p>
-            These providers may process certain technical or usage information
-            when you interact with our website.
+            These services may process certain technical information,
+            usage information, or other data when you interact
+            with our website.
           </p>
           <p>
-            Third-party services operate under their own terms and privacy
-            policies. We encourage users to review those policies when using
-            external services.
+            Third-party services operate under their own terms,
+            privacy policies, and data handling practices.
+          </p>
+          <p>
+            We encourage users to review the relevant privacy
+            policies of external services before using them.
+          </p>
+          <p>
+            Examples of third-party services that may be relevant
+            to the operation of LIONRAMP include:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://www.cloudflare.com/privacypolicy/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cloudflare Privacy Policy
+              </a>
+              {" "} - website delivery, hosting, and security services.
+            </li>
+            <li>
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Privacy Policy
+              </a>
+              {" "} - applicable Google services and advertising.
+            </li>
+          </ul>
+          <p>
+            The actual third-party services involved may change
+            as the website develops.
           </p>
         </>
       ),
@@ -213,16 +365,22 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            We take reasonable steps to protect our website and the information
-            handled through its services.
+            We take reasonable steps to maintain the security
+            and proper operation of LIONRAMP.
           </p>
           <p>
-            However, no website, internet connection, or electronic storage
-            method can be guaranteed to be completely secure.
+            However, no website, internet connection, electronic
+            transmission, or storage system can be guaranteed
+            to be completely secure.
           </p>
           <p>
-            Users should take appropriate precautions when accessing online
-            services and sharing personal or confidential information.
+            Users should take appropriate precautions when using
+            online tools, accessing external services, and
+            processing personal or confidential information.
+          </p>
+          <p>
+            We cannot guarantee the security practices of
+            independent third-party providers.
           </p>
         </>
       ),
@@ -233,18 +391,22 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            LIONRAMP is not intentionally designed to collect personal
-            information from children under the age of 13.
+            LIONRAMP is not intentionally directed toward children
+            under the age of 13.
           </p>
           <p>
-            We do not knowingly collect personal information from children
-            under 13 without appropriate parental consent where required by
-            applicable law.
+            We do not knowingly request personal information
+            from children under 13 through our website.
           </p>
           <p>
-            If you believe that a child has provided personal information
-            through our website, appropriate steps should be taken to address
-            the issue.
+            If you believe that a child has provided personal
+            information through LIONRAMP, please visit our
+            Contact page to review the available contact options.
+          </p>
+          <p>
+            Where applicable, we will take reasonable steps
+            to address such concerns in accordance with
+            relevant legal requirements.
           </p>
         </>
       ),
@@ -255,19 +417,32 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            Depending on your location and applicable privacy laws, you may
-            have rights regarding your personal information.
+            Depending on your location and applicable privacy
+            laws, you may have certain rights regarding
+            your personal information.
           </p>
+          <p>These rights may include:</p>
           <ul>
             <li>The right to request access to personal information.</li>
             <li>The right to request correction of inaccurate information.</li>
             <li>The right to request deletion where legally applicable.</li>
-            <li>The right to object to or restrict certain data processing.</li>
-            <li>The right to manage cookies and advertising preferences.</li>
+            <li>The right to object to certain data processing.</li>
+            <li>The right to restrict certain types of processing.</li>
+            <li>The right to manage cookie and advertising preferences.</li>
           </ul>
           <p>
-            These rights may vary depending on the laws applicable to your
-            location and the services involved.
+            The availability and scope of these rights depend
+            on the laws applicable to your location and the
+            services involved.
+          </p>
+          <p>
+            To review available website contact options,
+            please visit our Contact page.
+          </p>
+          <p>
+            <a href="/?page=contact">
+              Visit LIONRAMP Contact Page
+            </a>
           </p>
         </>
       ),
@@ -278,43 +453,54 @@ const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <p>
-            We may update this Privacy Policy from time to time to reflect
-            changes to our website, services, technology, or legal requirements.
+            We may update this Privacy Policy from time to time
+            to reflect changes in our website, tools, technology,
+            third-party services, or applicable legal requirements.
           </p>
           <p>
-            Any updates will be published on this page with a revised
-            "Last Updated" date.
+            Any changes will be published on this page with
+            a revised Last Updated date.
           </p>
           <p>
-            We encourage visitors to review this page periodically to stay
-            informed about our privacy practices.
+            We encourage visitors to review this page periodically
+            to stay informed about our privacy practices.
+          </p>
+          <p>
+            Continued use of LIONRAMP after an updated policy
+            is published is subject to the updated policy,
+            to the extent permitted by applicable law.
           </p>
         </>
       ),
     },
     {
       id: "contact",
-      title: "Contact & Website",
+      title: "Contact & Official Website",
       content: (
         <>
           <p>
-            If you have questions or concerns about this Privacy Policy or
-            LIONRAMP's privacy practices, please visit our website for
-            available information and support.
+            If you have questions or concerns about this Privacy
+            Policy or LIONRAMP's privacy practices, please visit
+            our website and review the available contact options.
           </p>
           <div className="pp-website-link">
             <span className="pp-link-icon">↗</span>
             <div>
               <span className="pp-link-label">Official Website</span>
               <a
-                href="https://lionramp.iceiy.com"
+                href="https://lionramp.pages.dev"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                https://lionramp.iceiy.com
+                https://lionramp.pages.dev
               </a>
             </div>
           </div>
+          <p style={{ marginTop: "17px" }}>
+            <a href="/?page=contact">
+              Visit Contact Page
+            </a>
+          </p>
         </>
       ),
     },
@@ -852,9 +1038,10 @@ const PrivacyPolicy: React.FC = () => {
           </h1>
 
           <p className="pp-hero-description">
-            Transparency matters. Learn how LIONRAMP handles information,
-            protects your privacy, and provides a safer experience while
-            using our online tools.
+            Transparency matters. Learn how LIONRAMP handles
+            information, how cookies and advertising technologies
+            may be used, and how you can manage your privacy
+            preferences while using our online tools.
           </p>
 
           <div className="pp-hero-meta">
@@ -900,8 +1087,10 @@ const PrivacyPolicy: React.FC = () => {
             <div>
               <strong>Your privacy is important to us.</strong>
               <p>
-                Please read this policy carefully to understand how
-                information may be handled when you use LIONRAMP.
+                Please read this policy carefully to understand
+                how information may be collected, processed,
+                and shared when you use LIONRAMP and its
+                third-party services.
               </p>
             </div>
           </div>
@@ -936,11 +1125,11 @@ const PrivacyPolicy: React.FC = () => {
             Thank you for trusting LIONRAMP.
           </p>
           <a
-            href="https://lionramp.iceiy.com"
+            href="https://lionramp.pages.dev"
             target="_blank"
             rel="noopener noreferrer"
           >
-            lionramp.iceiy.com
+            lionramp.pages.dev
           </a>
         </div>
       </footer>

@@ -42,6 +42,8 @@ type ToolInformation = {
   keywords: string
 }
 
+const SITE_URL = 'https://lionramp.pages.dev'
+
 const tools: Tool[] = [
   { name: 'PDF to Word', category: 'PDF', icon: '📄', description: 'Convert PDF files into editable Word documents.' },
   { name: 'Word to PDF', category: 'PDF', icon: '📝', description: 'Turn Word documents into PDF files.' },
@@ -184,7 +186,6 @@ const toolInformation: Record<string, ToolInformation> = {
       'Generate A4 PDF documents.',
       'Automatically add new pages when the content exceeds the page limit.',
       'Download the generated PDF using a filename based on the document title.',
-      'Clear the editor to create another document.',
     ],
     steps: [
       'Enter your preferred document title.',
@@ -526,6 +527,24 @@ function ToolDetails({ toolName }: { toolName: string }) {
   )
 }
 
+function setMetaTag(
+  attribute: 'name' | 'property',
+  key: string,
+  content: string
+) {
+  let element = document.querySelector(
+    `meta[${attribute}="${key}"]`
+  ) as HTMLMetaElement | null
+
+  if (!element) {
+    element = document.createElement('meta')
+    element.setAttribute(attribute, key)
+    document.head.appendChild(element)
+  }
+
+  element.content = content
+}
+
 function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All Tools')
@@ -555,36 +574,64 @@ function App() {
     )
   }, [darkMode])
 
+  // SEO: Dynamic title, description, canonical and social metadata
   useEffect(() => {
     let title = 'LIONRAMP | Powerful Tools. Simple Solutions.'
+
     let description =
       'Explore free online tools from LIONRAMP. Convert, compress and manage PDF, image, video, audio and other files easily.'
+
+    let canonicalUrl = `${SITE_URL}/`
 
     if (activePage) {
       title = `${pageTitles[activePage]} | LIONRAMP`
       description = pageDescriptions[activePage] || description
+      canonicalUrl = `${SITE_URL}/?page=${activePage}`
     } else if (activeTool) {
       title = `${activeTool} | LIONRAMP`
 
       const info = toolInformation[activeTool]
+
       if (info) {
         description = info.overview
+      }
+
+      const slug = toolRoutes[activeTool]
+
+      if (slug) {
+        canonicalUrl = `${SITE_URL}/?tool=${slug}`
       }
     }
 
     document.title = title
 
-    let metaDescription = document.querySelector(
-      'meta[name="description"]'
-    ) as HTMLMetaElement | null
+    // Meta description
+    setMetaTag('name', 'description', description)
 
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta')
-      metaDescription.name = 'description'
-      document.head.appendChild(metaDescription)
+    // Canonical URL
+    let canonical = document.querySelector(
+      'link[rel="canonical"]'
+    ) as HTMLLinkElement | null
+
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.rel = 'canonical'
+      document.head.appendChild(canonical)
     }
 
-    metaDescription.content = description
+    canonical.href = canonicalUrl
+
+    // Open Graph metadata
+    setMetaTag('property', 'og:type', 'website')
+    setMetaTag('property', 'og:site_name', 'LIONRAMP')
+    setMetaTag('property', 'og:title', title)
+    setMetaTag('property', 'og:description', description)
+    setMetaTag('property', 'og:url', canonicalUrl)
+
+    // Twitter metadata
+    setMetaTag('name', 'twitter:card', 'summary')
+    setMetaTag('name', 'twitter:title', title)
+    setMetaTag('name', 'twitter:description', description)
   }, [activePage, activeTool])
 
   const filteredTools = useMemo(() => {

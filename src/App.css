@@ -419,6 +419,12 @@ a {
   gap: 22px;
 }
 
+@property --tool-card-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .tool-card {
   position: relative;
   isolation: isolate;
@@ -438,22 +444,22 @@ a {
     border-color 0.25s ease;
 }
 
-/* Animated Neon Border */
+/* Rounded Rectangle Border Animation */
 
 .tool-card::before {
   content: "";
   position: absolute;
-  inset: -1px;
+  inset: 0;
   z-index: 2;
   padding: 2px;
   border-radius: inherit;
   background: conic-gradient(
-    from 0deg,
+    from var(--tool-card-angle),
     transparent 0deg,
-    transparent 250deg,
-    #22d3ee 285deg,
-    #6366f1 315deg,
-    #c084fc 340deg,
+    transparent 285deg,
+    #22d3ee 305deg,
+    #6366f1 325deg,
+    #c084fc 345deg,
     transparent 360deg
   );
   -webkit-mask:
@@ -466,7 +472,6 @@ a {
   mask-composite: exclude;
   opacity: 0;
   pointer-events: none;
-  transform: rotate(0deg);
 }
 
 .tool-card:hover {
@@ -478,17 +483,17 @@ a {
 @media (hover: hover) and (pointer: fine) {
   .tool-card:hover::before {
     opacity: 1;
-    animation: toolCardNeonSpin 2.4s linear infinite;
+    animation: toolCardBorderTrace 2.5s linear infinite;
   }
 }
 
-@keyframes toolCardNeonSpin {
+@keyframes toolCardBorderTrace {
   from {
-    transform: rotate(0deg);
+    --tool-card-angle: 0deg;
   }
 
   to {
-    transform: rotate(360deg);
+    --tool-card-angle: 360deg;
   }
 }
 
@@ -1404,11 +1409,13 @@ input:focus-visible {
 }
 
 /* Remove the input outline inside the search container */
+
 .search-container input:focus-visible {
   outline: none !important;
 }
 
 /* Keep keyboard focus visible on the search container */
+
 .search-container:has(input:focus-visible) {
   outline: 2px solid rgba(129, 140, 248, 0.75);
   outline-offset: 3px;

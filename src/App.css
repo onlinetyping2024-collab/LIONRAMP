@@ -314,9 +314,12 @@ a {
   line-height: 1.7;
 }
 
-/* Search */
+/* =========================================
+   SEARCH BAR
+========================================= */
 
 .search-container {
+  position: relative;
   max-width: 650px;
   height: 58px;
   margin: 0 auto 25px;
@@ -328,37 +331,51 @@ a {
   border-radius: 12px;
   background: white;
   box-shadow: 0 5px 20px rgba(30, 40, 80, 0.04);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.4s ease;
 }
 
 .search-container:focus-within {
-  border-color: #e2e6f0;
-  box-shadow: 0 5px 20px rgba(30, 40, 80, 0.04);
+  border-color: rgba(99, 102, 241, 0.65);
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.08),
+    0 0 16px rgba(99, 102, 241, 0.18),
+    0 5px 20px rgba(30, 40, 80, 0.04);
 }
 
 .search-icon {
   font-size: 19px;
+  flex-shrink: 0;
 }
 
 .search-container input {
   width: 100%;
   height: 100%;
-  outline: none;
-  border: none;
+  outline: none !important;
+  border: none !important;
   background: transparent;
+  box-shadow: none !important;
   color: #202638;
   font-size: 14px;
 }
 
+.search-container input:focus,
 .search-container input:focus-visible {
-  outline: none;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .search-container input::placeholder {
   color: #a2aabc;
 }
 
-/* Category filter */
+/* =========================================
+   CATEGORY FILTER
+========================================= */
 
 .category-filter {
   display: flex;
@@ -392,7 +409,9 @@ a {
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
 }
 
-/* Tool cards */
+/* =========================================
+   TOOL CARDS
+========================================= */
 
 .tools-grid {
   display: grid;
@@ -419,21 +438,21 @@ a {
     border-color 0.25s ease;
 }
 
-/* Neon border animation */
+/* Animated Neon Border */
 
 .tool-card::before {
   content: "";
   position: absolute;
   inset: -1px;
   z-index: 2;
-  padding: 1.5px;
+  padding: 2px;
   border-radius: inherit;
   background: conic-gradient(
-    from var(--tool-card-angle, 0deg),
+    from 0deg,
     transparent 0deg,
-    transparent 245deg,
+    transparent 250deg,
     #22d3ee 285deg,
-    #818cf8 315deg,
+    #6366f1 315deg,
     #c084fc 340deg,
     transparent 360deg
   );
@@ -447,6 +466,7 @@ a {
   mask-composite: exclude;
   opacity: 0;
   pointer-events: none;
+  transform: rotate(0deg);
 }
 
 .tool-card:hover {
@@ -455,28 +475,20 @@ a {
   box-shadow: 0 15px 35px rgba(30, 40, 80, 0.09);
 }
 
-/* Animate only on desktop devices with a mouse */
-
-@property --tool-card-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
 @media (hover: hover) and (pointer: fine) {
   .tool-card:hover::before {
     opacity: 1;
-    animation: toolCardNeon 2.8s linear infinite;
+    animation: toolCardNeonSpin 2.4s linear infinite;
   }
 }
 
-@keyframes toolCardNeon {
+@keyframes toolCardNeonSpin {
   from {
-    --tool-card-angle: 0deg;
+    transform: rotate(0deg);
   }
 
   to {
-    --tool-card-angle: 360deg;
+    transform: rotate(360deg);
   }
 }
 
@@ -546,7 +558,9 @@ a {
   font-size: 18px;
 }
 
-/* No tools */
+/* =========================================
+   NO TOOLS
+========================================= */
 
 .no-tools {
   padding: 60px 20px;
@@ -994,8 +1008,12 @@ a {
 }
 
 .dark-mode .search-container:focus-within {
-  border-color: #374151;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  border-color: rgba(129, 140, 248, 0.7);
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(129, 140, 248, 0.08),
+    0 0 18px rgba(129, 140, 248, 0.2),
+    0 5px 20px rgba(0, 0, 0, 0.12);
 }
 
 .dark-mode .search-container input {
@@ -1385,8 +1403,15 @@ input:focus-visible {
   outline-offset: 3px;
 }
 
+/* Remove the input outline inside the search container */
 .search-container input:focus-visible {
-  outline: none;
+  outline: none !important;
+}
+
+/* Keep keyboard focus visible on the search container */
+.search-container:has(input:focus-visible) {
+  outline: 2px solid rgba(129, 140, 248, 0.75);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {

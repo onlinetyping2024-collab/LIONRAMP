@@ -61,8 +61,7 @@ const tools: Tool[] = [
 
 const toolInformation: Record<string, ToolInformation> = {
   'PDF to Word': {
-    overview:
-      'Convert PDF documents into editable Microsoft Word DOCX files using LIONRAMP PDF to Word Converter. The tool extracts selectable text from PDF pages and places it into a new Word document, making it easier to reuse or edit written content.',
+    overview: 'Convert PDF documents into editable Microsoft Word DOCX files using LIONRAMP PDF to Word Converter. The tool extracts selectable text from PDF pages and places it into a new Word document, making it easier to reuse or edit written content.',
     features: [
       'Extract selectable text from PDF documents.',
       'Create a downloadable DOCX Word document.',
@@ -83,13 +82,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Text positioning and spacing may differ from the original PDF.',
       'Password-protected, damaged or unsupported PDF files may fail to convert.',
     ],
-    keywords:
-      'PDF to Word, PDF to DOCX, convert PDF online, PDF text extraction, free PDF converter',
+    keywords: 'PDF to Word, PDF to DOCX, convert PDF online, PDF text extraction, free PDF converter',
   },
 
   'Word to PDF': {
-    overview:
-      'Convert Microsoft Word DOCX documents into downloadable PDF files with LIONRAMP Word to PDF Converter. The tool extracts readable text from a DOCX document and creates a clean A4 PDF document.',
+    overview: 'Convert Microsoft Word DOCX documents into downloadable PDF files with LIONRAMP Word to PDF Converter. The tool extracts readable text from a DOCX document and creates a clean A4 PDF document.',
     features: [
       'Upload a DOCX Word document.',
       'Extract readable text from the document.',
@@ -113,13 +110,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'The generated PDF uses the standard Helvetica font.',
       'Sinhala and other Unicode scripts may not display correctly because a Unicode font is not embedded.',
     ],
-    keywords:
-      'Word to PDF, DOCX to PDF, convert Word document online, free Word PDF converter',
+    keywords: 'Word to PDF, DOCX to PDF, convert Word document online, free Word PDF converter',
   },
 
   'Merge PDF': {
-    overview:
-      'Combine multiple PDF documents into one convenient PDF file using LIONRAMP Merge PDF. Select multiple PDF files, arrange them in your preferred order and create a single combined document.',
+    overview: 'Combine multiple PDF documents into one convenient PDF file using LIONRAMP Merge PDF. Select multiple PDF files, arrange them in your preferred order and create a single combined document.',
     features: [
       'Select two or more PDF documents.',
       'Combine pages from multiple PDF files.',
@@ -142,13 +137,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Password-protected, damaged or invalid PDF documents may not merge successfully.',
       'Large PDF files may require additional browser memory and processing time.',
     ],
-    keywords:
-      'Merge PDF, combine PDF files, join PDF documents, merge PDF online, free PDF merger',
+    keywords: 'Merge PDF, combine PDF files, join PDF documents, merge PDF online, free PDF merger',
   },
 
   'Split PDF': {
-    overview:
-      'Extract specific pages from a PDF document using LIONRAMP Split PDF. Enter individual page numbers or page ranges to create a new PDF containing only the pages you need.',
+    overview: 'Extract specific pages from a PDF document using LIONRAMP Split PDF. Enter individual page numbers or page ranges to create a new PDF containing only the pages you need.',
     features: [
       'Upload a PDF document.',
       'View the total number of pages.',
@@ -172,13 +165,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Password-protected, damaged or invalid PDF documents may fail.',
       'Large PDF files may require additional browser memory.',
     ],
-    keywords:
-      'Split PDF, extract PDF pages, select PDF pages, PDF page extractor, free PDF splitter',
+    keywords: 'Split PDF, extract PDF pages, select PDF pages, PDF page extractor, free PDF splitter',
   },
 
   'Text to PDF': {
-    overview:
-      'Create a downloadable PDF document from your own written text with LIONRAMP Text to PDF Converter. Add a document title, type or paste your content, and generate a clean A4 PDF file.',
+    overview: 'Create a downloadable PDF document from your own written text with LIONRAMP Text to PDF Converter. Add a document title, type or paste your content, and generate a clean A4 PDF file.',
     features: [
       'Enter a custom document title.',
       'Type or paste text into the editor.',
@@ -201,13 +192,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'The document uses standard Helvetica typography.',
       'Advanced formatting, images and tables are not supported in this basic text editor.',
     ],
-    keywords:
-      'Text to PDF, create PDF from text, online PDF creator, text document to PDF, free PDF generator',
+    keywords: 'Text to PDF, create PDF from text, online PDF creator, text document to PDF, free PDF generator',
   },
 
   'Image Converter': {
-    overview:
-      'Convert images between popular image formats using LIONRAMP Image Converter. Choose an image, select your preferred output format and download the converted file without using a separate desktop application.',
+    overview: 'Convert images between popular image formats using LIONRAMP Image Converter. Choose an image, select your preferred output format and download the converted file without using a separate desktop application.',
     features: [
       'Convert images to PNG format.',
       'Convert images to JPEG format.',
@@ -232,13 +221,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Transparency may not be retained when converting an image to JPEG.',
       'Very large images may require additional browser memory.',
     ],
-    keywords:
-      'Image Converter, PNG to JPG, JPG to PNG, WebP converter, convert images online, free image converter',
+    keywords: 'Image Converter, PNG to JPG, JPG to PNG, WebP converter, convert images online, free image converter',
   },
 
   'Image Compressor': {
-    overview:
-      'Reduce the file size of images with LIONRAMP Image Compressor. Adjust the compression quality and export images in JPEG, PNG or WebP formats to help manage image file sizes.',
+    overview: 'Reduce the file size of images with LIONRAMP Image Compressor. Adjust the compression quality and export images in JPEG, PNG or WebP formats to help manage image file sizes.',
     features: [
       'Compress supported image files in your browser.',
       'Choose JPEG, PNG or WebP as the output format.',
@@ -263,13 +250,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Compression results depend on the image content, output format and selected quality.',
       'Very large images may require additional browser memory.',
     ],
-    keywords:
-      'Image Compressor, compress images online, reduce image size, JPG compressor, PNG compressor, WebP compressor',
+    keywords: 'Image Compressor, compress images online, reduce image size, JPG compressor, PNG compressor, WebP compressor',
   },
 
   'Image Resizer': {
-    overview:
-      'Change image dimensions with LIONRAMP Image Resizer. Enter your preferred width and height, keep the original aspect ratio when needed, and export the resized image in a popular image format.',
+    overview: 'Change image dimensions with LIONRAMP Image Resizer. Enter your preferred width and height, keep the original aspect ratio when needed, and export the resized image in a popular image format.',
     features: [
       'Upload an image and view its original dimensions.',
       'Set custom output width and height.',
@@ -294,13 +279,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Output image quality uses a fixed browser Canvas setting.',
       'Very large dimensions may require significant browser memory.',
     ],
-    keywords:
-      'Image Resizer, resize image online, change image dimensions, photo resizer, PNG resizer, JPG resizer',
+    keywords: 'Image Resizer, resize image online, change image dimensions, photo resizer, PNG resizer, JPG resizer',
   },
 
   'Video Converter': {
-    overview:
-      'Convert video files into different formats using LIONRAMP Video Converter. The tool uses FFmpeg technology in your browser to process video files and create downloadable output files.',
+    overview: 'Convert video files into different formats using LIONRAMP Video Converter. The tool uses FFmpeg technology in your browser to process video files and create downloadable output files.',
     features: [
       'Convert videos to MP4 format.',
       'Convert videos to WebM format.',
@@ -325,13 +308,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Conversion time depends on the video size, codec and device performance.',
       'MP3 output extracts audio only; it does not include video.',
     ],
-    keywords:
-      'Video Converter, convert video online, MP4 converter, WebM converter, AVI converter, MOV converter, video to MP3',
+    keywords: 'Video Converter, convert video online, MP4 converter, WebM converter, AVI converter, MOV converter, video to MP3',
   },
 
   'Audio Converter': {
-    overview:
-      'Convert audio files into popular audio formats using LIONRAMP Audio Converter. Select an audio file, choose an output format and create a downloadable converted audio file directly in your browser.',
+    overview: 'Convert audio files into popular audio formats using LIONRAMP Audio Converter. Select an audio file, choose an output format and create a downloadable converted audio file directly in your browser.',
     features: [
       'Convert audio to MP3.',
       'Convert audio to WAV.',
@@ -356,13 +337,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Output quality and file size depend on the selected format and encoding settings.',
       'Conversion errors may occur if the input file is damaged or unsupported.',
     ],
-    keywords:
-      'Audio Converter, convert audio online, MP3 converter, WAV converter, OGG converter, FLAC converter, AAC converter',
+    keywords: 'Audio Converter, convert audio online, MP3 converter, WAV converter, OGG converter, FLAC converter, AAC converter',
   },
 
   'ZIP Extractor': {
-    overview:
-      'Open ZIP archives and access their contents with LIONRAMP ZIP Extractor. View the files and folders inside an archive, download individual files or create a new ZIP containing all extracted files.',
+    overview: 'Open ZIP archives and access their contents with LIONRAMP ZIP Extractor. View the files and folders inside an archive, download individual files or create a new ZIP containing all extracted files.',
     features: [
       'Open ZIP archive files.',
       'Display files and folders inside the archive.',
@@ -386,13 +365,11 @@ const toolInformation: Record<string, ToolInformation> = {
       'Large archives may require significant browser memory.',
       'Damaged or invalid ZIP files may fail to open or extract.',
     ],
-    keywords:
-      'ZIP Extractor, extract ZIP online, open ZIP files, unzip files, ZIP archive extractor, download ZIP contents',
+    keywords: 'ZIP Extractor, extract ZIP online, open ZIP files, unzip files, ZIP archive extractor, download ZIP contents',
   },
 
   'Unit Converter': {
-    overview:
-      'Convert everyday measurements quickly using LIONRAMP Unit Converter. Select a measurement category, enter a value and choose the units you want to convert between. The result is calculated automatically.',
+    overview: 'Convert everyday measurements quickly using LIONRAMP Unit Converter. Select a measurement category, enter a value and choose the units you want to convert between. The result is calculated automatically.',
     features: [
       'Convert length measurements.',
       'Convert weight and mass measurements.',
@@ -420,8 +397,7 @@ const toolInformation: Record<string, ToolInformation> = {
       'Results are based on fixed conversion factors.',
       'This tool does not provide live currency or exchange-rate conversion.',
     ],
-    keywords:
-      'Unit Converter, online measurement converter, length converter, weight converter, temperature converter, area converter, volume converter, speed converter, data storage converter',
+    keywords: 'Unit Converter, online measurement converter, length converter, weight converter, temperature converter, area converter, volume converter, speed converter, data storage converter',
   },
 }
 
@@ -462,6 +438,40 @@ const pageDescriptions: Record<string, string> = {
   faq: 'Find answers to frequently asked questions about LIONRAMP tools and services.',
   disclaimer: 'Read the LIONRAMP disclaimer and important information about using our online tools.',
   'privacy-policy': 'Learn how LIONRAMP handles privacy, browser-based processing and website information.',
+}
+
+function getCurrentRoute() {
+  const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
+  const params = new URLSearchParams(window.location.search)
+
+  // New clean tool URLs
+  const toolMatch = pathname.match(/^\/tools\/([^/]+)$/)
+
+  if (toolMatch) {
+    return {
+      tool: routeTools[toolMatch[1]] || '',
+      page: '',
+    }
+  }
+
+  // New clean information page URLs
+  const pageSlug = pathname.replace(/^\//, '')
+
+  if (pageSlug && pageTitles[pageSlug]) {
+    return {
+      tool: '',
+      page: pageSlug,
+    }
+  }
+
+  // Legacy query URL support
+  const oldTool = params.get('tool')
+  const oldPage = params.get('page')
+
+  return {
+    tool: oldTool ? routeTools[oldTool] || '' : '',
+    page: oldPage && pageTitles[oldPage] ? oldPage : '',
+  }
 }
 
 function ToolDetails({ toolName }: { toolName: string }) {
@@ -553,17 +563,10 @@ function App() {
     return localStorage.getItem('lionramp-theme') === 'dark'
   })
 
-  const [activeTool] = useState(() => {
-    const params = new URLSearchParams(window.location.search)
-    const slug = params.get('tool')
-    return slug ? routeTools[slug] || '' : ''
-  })
+  const currentRoute = useMemo(() => getCurrentRoute(), [])
 
-  const [activePage] = useState(() => {
-    const params = new URLSearchParams(window.location.search)
-    const page = params.get('page')
-    return page && pageTitles[page] ? page : ''
-  })
+  const activeTool = currentRoute.tool
+  const activePage = currentRoute.page
 
   useEffect(() => {
     localStorage.setItem('lionramp-theme', darkMode ? 'dark' : 'light')
@@ -586,7 +589,7 @@ function App() {
     if (activePage) {
       title = `${pageTitles[activePage]} | LIONRAMP`
       description = pageDescriptions[activePage] || description
-      canonicalUrl = `${SITE_URL}/?page=${activePage}`
+      canonicalUrl = `${SITE_URL}/${activePage}`
     } else if (activeTool) {
       title = `${activeTool} | LIONRAMP`
 
@@ -599,16 +602,14 @@ function App() {
       const slug = toolRoutes[activeTool]
 
       if (slug) {
-        canonicalUrl = `${SITE_URL}/?tool=${slug}`
+        canonicalUrl = `${SITE_URL}/tools/${slug}`
       }
     }
 
     document.title = title
 
-    // Meta description
     setMetaTag('name', 'description', description)
 
-    // Canonical URL
     let canonical = document.querySelector(
       'link[rel="canonical"]'
     ) as HTMLLinkElement | null
@@ -621,14 +622,12 @@ function App() {
 
     canonical.href = canonicalUrl
 
-    // Open Graph metadata
     setMetaTag('property', 'og:type', 'website')
     setMetaTag('property', 'og:site_name', 'LIONRAMP')
     setMetaTag('property', 'og:title', title)
     setMetaTag('property', 'og:description', description)
     setMetaTag('property', 'og:url', canonicalUrl)
 
-    // Twitter metadata
     setMetaTag('name', 'twitter:card', 'summary')
     setMetaTag('name', 'twitter:title', title)
     setMetaTag('name', 'twitter:description', description)
@@ -656,8 +655,11 @@ function App() {
       return
     }
 
-    const url = `${window.location.pathname}?tool=${route}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    window.open(
+      `${window.location.origin}/tools/${route}`,
+      '_blank',
+      'noopener,noreferrer'
+    )
   }
 
   const renderActiveTool = () => {
@@ -693,12 +695,12 @@ function App() {
   const footerLinks = (
     <div className="footer-page-links">
       <a href="/">Home</a>
-      <a href="/?page=about">About Us</a>
-      <a href="/?page=faq">FAQ</a>
-      <a href="/?page=contact">Contact Us</a>
-      <a href="/?page=privacy-policy">Privacy Policy</a>
-      <a href="/?page=terms">Terms & Conditions</a>
-      <a href="/?page=disclaimer">Disclaimer</a>
+      <a href="/about">About Us</a>
+      <a href="/faq">FAQ</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms">Terms & Conditions</a>
+      <a href="/disclaimer">Disclaimer</a>
     </div>
   )
 
@@ -751,7 +753,7 @@ function App() {
           <button
             className="back-button"
             onClick={() => {
-              window.location.href = window.location.pathname
+              window.location.href = '/'
             }}
           >
             ← Back to Home
@@ -806,7 +808,7 @@ function App() {
             <a href="#home">Home</a>
             <a href="#tools">Tools</a>
             <a href="#about">About</a>
-            <a href="/?page=faq">FAQ</a>
+            <a href="/faq">FAQ</a>
           </nav>
 
           <div className="header-actions">
@@ -928,7 +930,7 @@ function App() {
               </div>
             </div>
 
-            <a href="/?page=about" className="info-action-link">
+            <a href="/about" className="info-action-link">
               Learn More About Us →
             </a>
           </div>

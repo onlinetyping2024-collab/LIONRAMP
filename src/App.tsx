@@ -444,7 +444,6 @@ function getCurrentRoute() {
   const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
   const params = new URLSearchParams(window.location.search)
 
-  // New clean tool URLs
   const toolMatch = pathname.match(/^\/tools\/([^/]+)$/)
 
   if (toolMatch) {
@@ -454,7 +453,6 @@ function getCurrentRoute() {
     }
   }
 
-  // New clean information page URLs
   const pageSlug = pathname.replace(/^\//, '')
 
   if (pageSlug && pageTitles[pageSlug]) {
@@ -464,7 +462,6 @@ function getCurrentRoute() {
     }
   }
 
-  // Legacy query URL support
   const oldTool = params.get('tool')
   const oldPage = params.get('page')
 
@@ -558,6 +555,7 @@ function setMetaTag(
 function App() {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState('All Tools')
+  const [searchFocused, setSearchFocused] = useState(false)
 
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('lionramp-theme') === 'dark'
@@ -577,7 +575,6 @@ function App() {
     )
   }, [darkMode])
 
-  // SEO: Dynamic title, description, canonical and social metadata
   useEffect(() => {
     let title = 'LIONRAMP | Powerful Tools. Simple Solutions.'
 
@@ -743,7 +740,6 @@ function App() {
     </footer>
   )
 
-  // Individual tool page
   if (activeTool) {
     return (
       <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -772,7 +768,6 @@ function App() {
     )
   }
 
-  // Information and legal pages
   if (activePage) {
     return (
       <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -794,7 +789,6 @@ function App() {
     )
   }
 
-  // Homepage
   return (
     <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="site-header">
@@ -848,15 +842,25 @@ function App() {
             <p>Choose a tool and get your work done quickly and easily.</p>
           </div>
 
-          <div className="search-container">
-            <span className="search-icon">🔍</span>
+          <div
+            className={`search-container ${
+              searchFocused ? 'search-focused' : ''
+            }`}
+          >
+            <span className="search-icon" aria-hidden="true">
+              🔍
+            </span>
+
             <input
               type="search"
               placeholder="Search for a tool..."
               value={search}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 setSearch(event.target.value)
               }
+              aria-label="Search for a tool"
             />
           </div>
 

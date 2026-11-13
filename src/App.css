@@ -344,11 +344,8 @@ a {
     background 0.3s ease;
 }
 
-/* Animated Neon Border */
-
 .search-container.search-focused {
   border: 2px solid transparent;
-
   background:
     linear-gradient(#ffffff, #ffffff) padding-box,
     conic-gradient(
@@ -358,9 +355,7 @@ a {
       #c084fc,
       #22d3ee
     ) border-box;
-
   animation: searchBorderRotate 4s linear infinite;
-
   box-shadow:
     0 0 5px rgba(34, 211, 238, 0.25),
     0 0 14px rgba(99, 102, 241, 0.22),
@@ -377,8 +372,6 @@ a {
     --search-angle: 360deg;
   }
 }
-
-/* Additional Neon Glow */
 
 .search-container.search-focused::after {
   content: "";
@@ -410,8 +403,6 @@ a {
   }
 }
 
-/* Moving Search Icon */
-
 .search-icon {
   position: absolute;
   left: 20px;
@@ -433,8 +424,6 @@ a {
   pointer-events: none;
 }
 
-/* Move icon to right when focused */
-
 .search-container.search-focused .search-icon {
   left: calc(100% - 47px);
   transform: translateY(-50%) rotate(360deg);
@@ -442,8 +431,6 @@ a {
     drop-shadow(0 0 4px rgba(34, 211, 238, 0.65))
     drop-shadow(0 0 7px rgba(168, 85, 247, 0.45));
 }
-
-/* Search Input */
 
 .search-container input {
   position: relative;
@@ -508,14 +495,8 @@ a {
 }
 
 /* =========================================
-   TOOL CARDS
+   PREMIUM ANIMATED TOOL CARDS
 ========================================= */
-
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
 
 @property --tool-card-angle {
   syntax: "<angle>";
@@ -536,13 +517,15 @@ a {
   border-radius: 17px;
   background: white;
   box-shadow: 0 7px 25px rgba(30, 40, 80, 0.035);
+  transform: translateY(0);
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.3s ease;
 }
 
-/* Rounded Rectangle Border Animation */
+/* Animated Neon Border */
 
 .tool-card::before {
   content: "";
@@ -570,18 +553,48 @@ a {
   mask-composite: exclude;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-.tool-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(129, 140, 248, 0.4);
-  box-shadow: 0 15px 35px rgba(30, 40, 80, 0.09);
+/* Animated Outer Glow */
+
+.tool-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -4px;
+  border-radius: 21px;
+  background: linear-gradient(
+    120deg,
+    rgba(34, 211, 238, 0.4),
+    rgba(99, 102, 241, 0.35),
+    rgba(192, 132, 252, 0.4)
+  );
+  filter: blur(17px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
+
+/* Card Hover Animation */
 
 @media (hover: hover) and (pointer: fine) {
+  .tool-card:hover {
+    transform: translateY(-8px) scale(1.015);
+    border-color: rgba(129, 140, 248, 0.55);
+    box-shadow:
+      0 18px 40px rgba(30, 40, 80, 0.11),
+      0 0 18px rgba(99, 102, 241, 0.08);
+  }
+
   .tool-card:hover::before {
     opacity: 1;
     animation: toolCardBorderTrace 2.5s linear infinite;
+  }
+
+  .tool-card:hover::after {
+    opacity: 0.55;
+    animation: toolCardGlow 2s ease-in-out infinite alternate;
   }
 }
 
@@ -595,7 +608,22 @@ a {
   }
 }
 
+@keyframes toolCardGlow {
+  from {
+    opacity: 0.3;
+    filter: blur(13px);
+  }
+
+  to {
+    opacity: 0.7;
+    filter: blur(20px);
+  }
+}
+
+/* Tool Icon Animation */
+
 .tool-icon {
+  position: relative;
   width: 53px;
   height: 53px;
   margin-bottom: 17px;
@@ -605,6 +633,32 @@ a {
   border-radius: 14px;
   background: #f0f1ff;
   font-size: 25px;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tool-card:hover .tool-icon {
+    transform: translateY(-5px) scale(1.12) rotate(-5deg);
+    background: #e8eaff;
+    box-shadow:
+      0 5px 15px rgba(99, 102, 241, 0.15),
+      0 0 18px rgba(34, 211, 238, 0.12);
+    animation: toolIconFloat 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes toolIconFloat {
+  0%, 100% {
+    transform: translateY(-5px) scale(1.12) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-9px) scale(1.15) rotate(3deg);
+  }
 }
 
 .tool-card-content {
@@ -627,6 +681,7 @@ a {
   color: #202638;
   font-size: 18px;
   font-weight: 800;
+  transition: color 0.3s ease;
 }
 
 .tool-card p {
@@ -634,9 +689,14 @@ a {
   color: #8991a3;
   font-size: 13px;
   line-height: 1.7;
+  transition: color 0.3s ease;
 }
 
+/* Open Tool Button */
+
 .open-tool-button {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   min-height: 43px;
   padding: 10px 15px;
@@ -649,16 +709,79 @@ a {
   color: #6366f1;
   font-size: 13px;
   font-weight: 800;
-  transition: all 0.2s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.open-tool-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
 }
 
 .open-tool-button:hover {
   background: #6366f1;
   color: white;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.25);
+}
+
+.open-tool-button:hover::before {
+  left: 150%;
 }
 
 .open-tool-button span {
   font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.open-tool-button:hover span {
+  transform: translateX(5px);
+}
+
+/* Mobile Touch Animation */
+
+@media (hover: none) {
+  .tool-card:active {
+    transform: scale(0.975);
+    border-color: #818cf8;
+    box-shadow:
+      0 8px 25px rgba(99, 102, 241, 0.13),
+      0 0 15px rgba(34, 211, 238, 0.12);
+  }
+
+  .tool-card:active::before {
+    opacity: 1;
+    animation: toolCardBorderTrace 2.5s linear infinite;
+  }
+
+  .tool-card:active::after {
+    opacity: 0.5;
+  }
+
+  .tool-card:active .tool-icon {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+  }
+
+  .tool-card:active .open-tool-button {
+    background: #6366f1;
+    color: white;
+  }
 }
 
 /* =========================================
@@ -1114,7 +1237,6 @@ a {
 
 .dark-mode .search-container.search-focused {
   border: 2px solid transparent;
-
   background:
     linear-gradient(#1b2435, #1b2435) padding-box,
     conic-gradient(
@@ -1124,7 +1246,6 @@ a {
       #c084fc,
       #22d3ee
     ) border-box;
-
   box-shadow:
     0 0 6px rgba(34, 211, 238, 0.25),
     0 0 18px rgba(129, 140, 248, 0.25),
@@ -1160,6 +1281,8 @@ a {
   color: white;
 }
 
+/* Dark Mode Animated Cards */
+
 .dark-mode .tool-card {
   border-color: #293449;
   background: #1b2435;
@@ -1167,7 +1290,10 @@ a {
 }
 
 .dark-mode .tool-card:hover {
-  border-color: rgba(129, 140, 248, 0.5);
+  border-color: rgba(129, 140, 248, 0.6);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(99, 102, 241, 0.12);
 }
 
 .dark-mode .tool-icon {
@@ -1533,18 +1659,23 @@ input:focus-visible {
   outline-offset: 3px;
 }
 
-/* Remove the input outline inside the search container */
-
 .search-container input:focus-visible {
   outline: none !important;
 }
-
-/* Keep keyboard focus visible on the search container */
 
 .search-container:has(input:focus-visible) {
   outline: 2px solid rgba(129, 140, 248, 0.75);
   outline-offset: 3px;
 }
+
+/* Keyboard Accessibility for Tool Cards */
+
+.tool-card:focus-within {
+  border-color: rgba(129, 140, 248, 0.65);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+/* Reduced Motion Support */
 
 @media (prefers-reduced-motion: reduce) {
   *,

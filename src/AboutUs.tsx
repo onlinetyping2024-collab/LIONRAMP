@@ -1,8 +1,9 @@
+
 import React from 'react'
 
 const AboutUs: React.FC = () => {
   return (
-    <main className="info-page">
+    <div className="info-page">
       <div className="info-page-inner">
         <span className="info-label">ABOUT US</span>
         <h1>About LIONRAMP</h1>
@@ -68,7 +69,7 @@ const AboutUs: React.FC = () => {
 
         <p className="info-updated">Last updated: November 11, 2026</p>
       </div>
-    </main>
+    </div>
   )
 }
 

@@ -3,7 +3,7 @@ import React from 'react'
 
 const ContactUs: React.FC = () => {
   return (
-    <main className="info-page">
+    <div className="info-page">
       <div className="info-page-inner">
         <span className="info-label">GET IN TOUCH</span>
         <h1>Contact LIONRAMP</h1>
@@ -57,7 +57,7 @@ const ContactUs: React.FC = () => {
 
         <p className="info-updated">Last updated: November 12, 2026</p>
       </div>
-    </main>
+    </div>
   )
 }
 

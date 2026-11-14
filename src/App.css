@@ -64,6 +64,7 @@ img {
 }
 
 .app {
+  width: 100%;
   min-height: 100vh;
   overflow: hidden;
   background: var(--background);
@@ -328,8 +329,6 @@ img {
     0 0 25px rgba(139, 92, 246, 0.7);
 }
 
-/* LEFT BOTTOM FLOATING BALL */
-
 .hero-section {
   background-attachment: scroll;
 }
@@ -489,7 +488,7 @@ img {
     box-shadow var(--transition);
 }
 
-/* Animated Gradient Border */
+/* ANIMATED GRADIENT BORDER */
 
 .tool-card::before {
   position: absolute;
@@ -511,7 +510,7 @@ img {
   transition: opacity 0.3s ease;
 }
 
-/* Card Inner Background */
+/* CARD INNER BACKGROUND */
 
 .tool-card::after {
   position: absolute;
@@ -522,7 +521,7 @@ img {
   background: var(--surface);
 }
 
-/* Hover Animation */
+/* HOVER ANIMATION */
 
 .tool-card:hover {
   transform: translateY(-7px);
@@ -537,7 +536,7 @@ img {
   animation-play-state: running;
 }
 
-/* Keep Card Content Above Border */
+/* KEEP CARD CONTENT ABOVE BORDER */
 
 .tool-icon,
 .tool-card-content,
@@ -600,7 +599,7 @@ img {
   line-height: 1.7;
 }
 
-/* SIMPLE OPEN TOOL BUTTON - NEON MOUSE EFFECT REMOVED */
+/* OPEN TOOL BUTTON */
 
 .open-tool-button {
   position: relative;
@@ -748,6 +747,7 @@ img {
 /* FOOTER */
 
 .site-footer {
+  width: 100%;
   padding: 45px 24px 25px;
   background: #11152a;
   color: #ffffff;
@@ -761,11 +761,16 @@ img {
 .footer-brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
-  margin-bottom: 35px;
+  width: 100%;
+  margin: 0 auto 35px;
+  text-align: left;
 }
 
 .footer-brand img {
+  display: block;
+  flex: 0 0 53px;
   width: 53px;
   height: 53px;
   object-fit: contain;
@@ -789,6 +794,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   text-align: center;
   gap: 22px;
   padding-top: 24px;
@@ -796,9 +802,11 @@ img {
 }
 
 .footer-bottom > p {
+  width: 100%;
   margin: 0;
   color: #aeb4ca;
   font-size: 12px;
+  text-align: center;
 }
 
 .footer-page-links {
@@ -806,8 +814,9 @@ img {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 18px;
   width: 100%;
+  gap: 18px;
+  text-align: center;
 }
 
 .footer-page-links a {
@@ -1137,13 +1146,32 @@ main > section:not(.hero-section):not(.tools-section):not(.about-section) {
     padding: 35px 20px 23px;
   }
 
+  .footer-brand {
+    justify-content: center;
+    text-align: left;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .footer-brand img {
+    flex-basis: 46px;
+    width: 46px;
+    height: 46px;
+  }
+
   .footer-bottom {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    text-align: center;
     gap: 18px;
   }
 
+  .footer-bottom > p {
+    text-align: center;
+  }
+
   .footer-page-links {
+    justify-content: center;
     gap: 13px 17px;
   }
 
@@ -1201,6 +1229,16 @@ main > section:not(.hero-section):not(.tools-section):not(.about-section) {
 
   .category-button {
     padding: 8px 11px;
+  }
+
+  .footer-brand img {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-brand h3 {
+    font-size: 18px;
   }
 }
 

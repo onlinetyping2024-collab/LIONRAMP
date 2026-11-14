@@ -160,7 +160,7 @@ img {
   transform: translateY(-2px);
 }
 
-/* HERO */
+/* HERO SECTION */
 
 .hero-section {
   position: relative;
@@ -171,10 +171,30 @@ img {
   padding: 100px 24px;
   overflow: hidden;
   isolation: isolate;
+
   background:
-    radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.2), transparent 34%),
-    radial-gradient(circle at 85% 80%, rgba(59, 130, 246, 0.17), transparent 35%),
-    linear-gradient(135deg, #11152d 0%, #25215b 52%, #151c3b 100%);
+    radial-gradient(
+      circle at 9% 88%,
+      rgba(181, 167, 255, 0.95) 0 7px,
+      rgba(139, 92, 246, 0.35) 8px,
+      transparent 19px
+    ),
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(139, 92, 246, 0.2),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(59, 130, 246, 0.17),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #11152d 0%,
+      #25215b 52%,
+      #151c3b 100%
+    );
 }
 
 .hero-section::before,
@@ -269,43 +289,64 @@ img {
   font-size: 20px;
 }
 
+/* TOP RIGHT FLOATING BALL AND CURVED LINE */
+
 .hero-floating-element {
   position: absolute;
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   right: 12%;
-  top: 19%;
-  opacity: 0.65;
-  animation: floating 5s ease-in-out infinite;
+  top: 15%;
+  opacity: 0.75;
+  pointer-events: none;
+  animation: heroFloating 5s ease-in-out infinite;
 }
 
 .hero-floating-line {
   position: absolute;
-  width: 2px;
-  height: 100px;
-  left: 50%;
-  top: 10px;
-  background: linear-gradient(transparent, #a99cff, transparent);
-  transform: rotate(40deg);
+  width: 115px;
+  height: 115px;
+  left: 15px;
+  top: 15px;
+  border: 2px solid transparent;
+  border-top-color: rgba(181, 167, 255, 0.8);
+  border-right-color: rgba(181, 167, 255, 0.8);
+  border-radius: 50%;
+  transform: rotate(25deg);
 }
 
 .hero-floating-ball {
   position: absolute;
   width: 19px;
   height: 19px;
-  right: 18px;
-  top: 20px;
+  right: 12px;
+  top: 14px;
   border-radius: 50%;
   background: #b5a7ff;
-  box-shadow: 0 0 25px #8b5cf6;
+  box-shadow:
+    0 0 12px rgba(181, 167, 255, 0.8),
+    0 0 25px rgba(139, 92, 246, 0.7);
 }
 
-@keyframes floating {
+/* LEFT BOTTOM FLOATING BALL */
+
+.hero-section {
+  background-attachment: scroll;
+}
+
+.hero-section::marker {
+  display: none;
+}
+
+/* FLOATING ANIMATION */
+
+@keyframes heroFloating {
   0%, 100% {
     transform: translateY(0);
   }
+
   50% {
-    transform: translateY(-18px);
+    transform: translateY(-15px);
   }
 }
 
@@ -441,7 +482,10 @@ img {
   border-radius: 17px;
   background: var(--surface);
   box-shadow: var(--shadow);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
 }
 
 .tool-card::before {
@@ -474,7 +518,11 @@ img {
   justify-content: center;
   margin-bottom: 20px;
   border-radius: 15px;
-  background: linear-gradient(135deg, rgba(98, 84, 231, 0.13), rgba(139, 92, 246, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(98, 84, 231, 0.13),
+    rgba(139, 92, 246, 0.08)
+  );
   font-size: 28px;
 }
 
@@ -506,75 +554,32 @@ img {
   line-height: 1.7;
 }
 
-/* NEON MOUSE-FOLLOWING BUTTON */
+/* SIMPLE OPEN TOOL BUTTON - NEON MOUSE EFFECT REMOVED */
 
 .open-tool-button {
-  --mouse-x: 50%;
-  --mouse-y: 50%;
-
   position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   min-height: 45px;
   padding: 11px 15px;
-  overflow: hidden;
-  border: 1px solid rgba(112, 91, 255, 0.45);
+  border: 1px solid rgba(112, 91, 255, 0.35);
   border-radius: 9px;
-  background: linear-gradient(110deg, #5544dc, #7959ed, #5a54e8);
+  background: linear-gradient(110deg, #5544dc, #7959ed);
   color: #ffffff;
   font-size: 12px;
   font-weight: 850;
-  transition: transform var(--transition), box-shadow var(--transition);
-  isolation: isolate;
-}
-
-.open-tool-button::before {
-  position: absolute;
-  z-index: -1;
-  inset: -2px;
-  content: "";
-  background: radial-gradient(
-    160px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.75),
-    rgba(164, 140, 255, 0.25) 35%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.open-tool-button::after {
-  position: absolute;
-  z-index: -2;
-  inset: -2px;
-  content: "";
-  border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    #8c75ff,
-    #40d9ff,
-    #c65dff,
-    #ff69b4,
-    #8c75ff
-  );
-  filter: blur(8px);
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
 }
 
 .open-tool-button:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 0 12px rgba(115, 91, 255, 0.55),
-    0 0 28px rgba(100, 92, 255, 0.35);
-}
-
-.open-tool-button:hover::before,
-.open-tool-button:hover::after {
-  opacity: 1;
+  transform: translateY(-2px);
+  background: linear-gradient(110deg, #4939c8, #6848db);
+  box-shadow: 0 7px 18px rgba(98, 84, 231, 0.22);
 }
 
 .open-tool-button span {
@@ -583,7 +588,7 @@ img {
 }
 
 .open-tool-button:hover span {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 
 .no-tools {
@@ -614,7 +619,11 @@ img {
   position: relative;
   padding: 100px 24px;
   background:
-    radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.1), transparent 35%),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(139, 92, 246, 0.1),
+      transparent 35%
+    ),
     var(--surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -646,7 +655,9 @@ img {
   border: 1px solid var(--border);
   border-radius: 15px;
   background: var(--background);
-  transition: transform var(--transition), border-color var(--transition);
+  transition:
+    transform var(--transition),
+    border-color var(--transition);
 }
 
 .about-feature:hover {
@@ -953,6 +964,10 @@ main > section:not(.hero-section):not(.tools-section):not(.about-section) {
   .about-features {
     gap: 15px;
   }
+
+  .hero-floating-element {
+    right: 7%;
+  }
 }
 
 /* RESPONSIVE MOBILE */
@@ -1003,9 +1018,10 @@ main > section:not(.hero-section):not(.tools-section):not(.about-section) {
   }
 
   .hero-floating-element {
-    right: 5%;
-    top: 8%;
+    right: 3%;
+    top: 5%;
     transform: scale(0.7);
+    transform-origin: top right;
   }
 
   .tools-section {

@@ -398,44 +398,74 @@ img {
   width: min(600px, 100%);
   height: 58px;
   margin: 0 auto 27px;
+  padding: 2px;
   display: flex;
   align-items: center;
   border: 1px solid var(--border);
   border-radius: 13px;
   background: var(--surface);
   box-shadow: 0 5px 20px rgba(31, 41, 55, 0.04);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
+
+/* Thin Neon Border */
 
 .search-container::before {
   content: "";
   position: absolute;
-  z-index: -1;
-  inset: -2px;
-  border-radius: 15px;
-  background: conic-gradient(
-    from 0deg,
+  z-index: 0;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(
+    100deg,
     #6254e7,
     #b16cff,
     #4ea9ff,
+    #00e5ff,
+    #b16cff,
     #6254e7
   );
+  background-size: 300% 100%;
+  background-position: 0% 50%;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  animation: searchBorderRotate 3s linear infinite;
+  transition: opacity 0.45s ease;
+  animation: searchNeonFlow 3s linear infinite;
+  pointer-events: none;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Inner Search Background */
+
+.search-container::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 2px;
+  border-radius: 10px;
+  background: var(--surface);
   pointer-events: none;
 }
 
 .search-container.search-focused {
   border-color: transparent;
   box-shadow:
-    0 0 8px rgba(98, 84, 231, 0.25),
-    0 0 20px rgba(139, 92, 246, 0.18);
+    0 0 8px rgba(98, 84, 231, 0.18),
+    0 0 17px rgba(139, 92, 246, 0.12);
 }
 
 .search-container.search-focused::before {
   opacity: 1;
 }
+
+/* Search Icon */
 
 .search-icon {
   position: absolute;
@@ -457,13 +487,17 @@ img {
   transform: rotate(360deg);
 }
 
+/* Search Input */
+
 .search-container input {
+  position: relative;
+  z-index: 2;
   display: block;
   flex: 1;
   min-width: 0;
   width: 100%;
   height: 100%;
-  padding: 0 48px 0 48px;
+  padding: 0 48px;
   border: 0;
   outline: none;
   border-radius: inherit;
@@ -479,13 +513,19 @@ img {
   opacity: 0.8;
 }
 
-@keyframes searchBorderRotate {
-  from {
-    transform: rotate(0deg);
+/* Neon Animation */
+
+@keyframes searchNeonFlow {
+  0% {
+    background-position: 0% 50%;
   }
 
-  to {
-    transform: rotate(360deg);
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
 
